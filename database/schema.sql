@@ -1,0 +1,29 @@
+-- FESTRA EVENT MANAGEMENT PLATFORM DATABASE SCHEMA
+-- DATABASE ENGINE: MySQL
+
+CREATE DATABASE IF NOT EXISTS festra_db;
+USE festra_db;
+
+-- 1. USERS TABLE
+CREATE TABLE IF NOT EXISTS users (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    full_name VARCHAR(100) NOT NULL,
+    email VARCHAR(100) NOT NULL UNIQUE,
+    phone VARCHAR(20) NOT NULL,
+    password_hash VARCHAR(255) NOT NULL,
+    role ENUM('Organizer', 'Participant') NOT NULL,
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
+);
+
+-- Index user query values
+CREATE INDEX idx_users_email ON users(email);
+
+-- 2. EVENTS TABLE (PLANNED)
+-- CREATE TABLE events (...);
+
+-- 3. REGISTRATIONS TABLE (PLANNED)
+-- CREATE TABLE registrations (...);
+
+-- 4. ATTENDANCE TABLE (PLANNED)
+-- CREATE TABLE attendance (...);
