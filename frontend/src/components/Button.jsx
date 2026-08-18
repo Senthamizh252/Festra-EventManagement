@@ -11,7 +11,7 @@ export default function Button({
     className = '',
     icon,
 }) {
-    const baseStyles = 'inline-flex items-center justify-center font-semibold rounded-xl transition-all duration-300 focus:outline-none focus:ring-2 focus:ring-offset-2 disabled:opacity-55 disabled:pointer-events-none text-sm sm:text-base px-6 py-3.5';
+    const baseStyles = 'inline-flex items-center justify-center font-bold rounded-xl transition-all duration-300 focus:outline-none focus:ring-2 focus:ring-offset-2 disabled:opacity-55 disabled:pointer-events-none text-[17px] sm:text-[19px] px-6 py-4';
 
     const widthStyle = fullWidth ? 'w-full' : '';
 

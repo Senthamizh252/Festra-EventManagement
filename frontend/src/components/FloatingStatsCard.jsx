@@ -22,18 +22,18 @@ export default function FloatingStatsCard({
             )}
             <div className="flex-1 min-w-0">
                 {title && (
-                    <span className="text-[10px] font-semibold text-festra-text-secondary uppercase tracking-wider block">
+                    <span className="text-[12px] font-semibold text-festra-text-secondary uppercase tracking-wider block">
                         {title}
                     </span>
                 )}
                 {subtitle && (
-                    <h5 className="text-[13px] font-bold text-festra-text-primary mt-0.5 leading-tight truncate">
+                    <h5 className="text-[15px] font-bold text-festra-text-primary mt-0.5 leading-tight truncate">
                         {subtitle}
                     </h5>
                 )}
             </div>
             {badge && (
-                <span className="text-[9px] font-semibold px-2 py-0.5 rounded-full bg-[#10B981]/10 text-[#10B981] flex items-center gap-0.5">
+                <span className="text-[11px] font-semibold px-2 py-0.5 rounded-full bg-[#10B981]/10 text-[#10B981] flex items-center gap-0.5">
                     {badge}
                 </span>
             )}

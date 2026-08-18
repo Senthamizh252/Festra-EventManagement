@@ -72,28 +72,28 @@ export default function Login() {
             <AuthCard>
                 {/* LOGIN HEADER */}
                 <div className="text-center mb-6">
-                    <h2 className="text-2.5xl sm:text-[27px] font-black font-sans text-festra-text-primary tracking-tight">
+                    <h2 className="text-[32px] sm:text-[34px] font-black font-sans text-festra-text-primary tracking-tight">
                         Welcome Back 👋
                     </h2>
-                    <p className="text-sm sm:text-base text-festra-text-secondary mt-1.5 font-medium">
+                    <p className="text-[17px] sm:text-[19px] text-festra-text-secondary mt-1.5 font-medium">
                         Sign in to continue to Festra
                     </p>
                 </div>
 
                 {/* BANNER NOTIFICATIONS */}
                 {successMessage && (
-                    <div className="mb-6 p-4 rounded-xl bg-emerald-50 border border-emerald-100 text-emerald-800 text-xs font-semibold flex items-start gap-2.5 animate-fade-in-up">
-                        <CheckCircle className="h-4 w-4 text-[#10B981] flex-shrink-0" />
+                    <div className="mb-6 p-4 rounded-xl bg-emerald-50 border border-emerald-100 text-emerald-800 text-[15px] font-semibold flex items-start gap-2.5 animate-fade-in-up">
+                        <CheckCircle className="h-5 w-5 text-[#10B981] flex-shrink-0" />
                         <div>
                             <p>{successMessage}</p>
-                            <p className="text-[10px] text-emerald-600/90 font-medium mt-1">Redirecting you to dashboard preview...</p>
+                            <p className="text-[13px] text-emerald-600/90 font-medium mt-1">Redirecting you to dashboard preview...</p>
                         </div>
                     </div>
                 )}
 
                 {errorMessage && (
-                    <div className="mb-6 p-4.5 rounded-xl bg-red-55/10 border border-red-100 text-festra-error text-xs font-semibold flex items-center gap-2.5 animate-fade-in-up">
-                        <AlertCircle className="h-4.5 w-4.5 flex-shrink-0" />
+                    <div className="mb-6 p-4.5 rounded-xl bg-red-55/10 border border-red-100 text-festra-error text-[15px] font-semibold flex items-center gap-2.5 animate-fade-in-up">
+                        <AlertCircle className="h-5 w-5 flex-shrink-0" />
                         <span>{errorMessage}</span>
                     </div>
                 )}
@@ -105,7 +105,7 @@ export default function Login() {
                         id="email"
                         type="email"
                         label="Email Address"
-                        placeholder="Enter your email (e.g. organizer@festra.com)"
+                        placeholder="Enter your email"
                         value={email}
                         onChange={(e) => {
                             setEmail(e.target.value);
@@ -130,16 +130,16 @@ export default function Login() {
                     />
 
                     {/* REMEMBER ME / FORGOT PASSWORD */}
-                    <div className="flex items-center justify-between text-[13.5px] sm:text-sm select-none pt-1">
+                    <div className="flex items-center justify-between text-[17px] sm:text-[18px] select-none pt-1">
                         <button
                             type="button"
                             onClick={() => setRememberMe((prev) => !prev)}
                             className="flex items-center gap-2.5 text-festra-text-secondary hover:text-festra-text-primary transition-colors focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-primary/20 rounded-md py-1 px-1.5 -ml-1.5"
                         >
                             {rememberMe ? (
-                                <CheckSquare className="h-5 w-5 text-primary fill-primary/10" />
+                                <CheckSquare className="h-5.5 w-5.5 text-primary fill-primary/10" />
                             ) : (
-                                <Square className="h-5 w-5 text-slate-350" />
+                                <Square className="h-5.5 w-5.5 text-slate-350" />
                             )}
                             <span className="font-semibold">Remember me</span>
                         </button>
@@ -169,7 +169,7 @@ export default function Login() {
                 {/* OR DIVIDER */}
                 <div className="my-6 flex items-center justify-center gap-3 select-none">
                     <div className="h-[1px] bg-slate-150 flex-1"></div>
-                    <span className="text-[10px] font-bold text-gray-400 tracking-widest">OR</span>
+                    <span className="text-[13px] font-bold text-gray-400 tracking-widest">OR</span>
                     <div className="h-[1px] bg-slate-150 flex-1"></div>
                 </div>
 
@@ -178,7 +178,7 @@ export default function Login() {
                     variant="secondary"
                     onClick={handleGoogleLogin}
                     icon={
-                        <svg viewBox="0 0 24 24" className="w-[18px] h-[18px] flex-shrink-0" fill="currentColor">
+                        <svg viewBox="0 0 24 24" className="w-[20px] h-[20px] flex-shrink-0" fill="currentColor">
                             <path
                                 d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z"
                                 fill="#4285F4"
@@ -203,7 +203,7 @@ export default function Login() {
 
                 {/* CREATE ACCOUNT INVITATION */}
                 <div className="mt-8 pt-7 border-t border-slate-100 flex flex-col items-center gap-4">
-                    <p className="text-sm sm:text-[15px] font-semibold text-festra-text-secondary">
+                    <p className="text-[17px] sm:text-[18px] font-semibold text-festra-text-secondary">
                         Don't have an account?
                     </p>
                     <Button

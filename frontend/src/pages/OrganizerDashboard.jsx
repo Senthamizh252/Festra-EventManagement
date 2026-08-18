@@ -24,12 +24,12 @@ export default function OrganizerDashboard() {
                 {/* Dashboard Title */}
                 <main className="bg-white rounded-2xl border border-gray-150 p-8 shadow-md">
                     <div className="flex items-center gap-3 mb-6">
-                        <span className="p-2 bg-primary/10 text-primary rounded-xl font-bold text-sm">
+                        <span className="p-2 bg-primary/10 text-primary rounded-xl font-bold text-[16px]">
                             ROLE: ORGANIZER
                         </span>
                     </div>
 
-                    <h2 className="text-3xl font-extrabold text-festra-text-primary tracking-tight">
+                    <h2 className="text-[32px] font-extrabold text-festra-text-primary tracking-tight">
                         Organizer Dashboard
                     </h2>
                     <p className="text-festra-text-secondary mt-3 max-w-2xl leading-relaxed">
@@ -46,15 +46,15 @@ export default function OrganizerDashboard() {
                             { title: 'Analytics & Feedback', desc: 'Track sign-ups, attendee counts, and surveys.' },
                         ].map((item, index) => (
                             <div key={index} className="p-4 rounded-xl border border-gray-100 bg-gray-50/50 hover:bg-gray-50 transition-colors">
-                                <h4 className="font-bold text-festra-text-primary text-sm">{item.title}</h4>
-                                <p className="text-xs text-festra-text-secondary mt-1">{item.desc}</p>
+                                <h4 className="font-bold text-festra-text-primary text-[16px]">{item.title}</h4>
+                                <p className="text-[14px] text-festra-text-secondary mt-1">{item.desc}</p>
                             </div>
                         ))}
                     </div>
                 </main>
             </div>
 
-            <footer className="text-center text-xs text-festra-text-secondary mt-10">
+            <footer className="text-center text-[14px] text-festra-text-secondary mt-10">
                 &copy; 2026 Festra. All rights reserved.
             </footer>
         </div>

@@ -72,7 +72,7 @@ export default function NotificationDropdown() {
             >
                 <Bell className="w-5.5 h-5.5 text-festra-text-secondary" />
                 {unreadCount > 0 && (
-                    <span className="absolute top-1.5 right-1.5 w-4 h-4 bg-red-500 rounded-full border-2 border-white flex items-center justify-center text-[8px] font-bold text-white">
+                    <span className="absolute top-1.5 right-1.5 w-4 h-4 bg-red-500 rounded-full border-2 border-white flex items-center justify-center text-[10px] font-bold text-white">
                         {unreadCount}
                     </span>
                 )}
@@ -84,11 +84,11 @@ export default function NotificationDropdown() {
 
                     {/* Header */}
                     <div className="flex items-center justify-between px-4 py-3 border-b border-gray-100 bg-gray-50/50">
-                        <h3 className="font-bold text-festra-text-primary text-[15px]">Notifications</h3>
+                        <h3 className="font-bold text-festra-text-primary text-[17px]">Notifications</h3>
                         {unreadCount > 0 && (
                             <button
                                 onClick={handleMarkAllRead}
-                                className="text-xs font-semibold text-primary hover:text-secondary transition-colors"
+                                className="text-[14px] font-semibold text-primary hover:text-secondary transition-colors"
                             >
                                 Mark all as read
                             </button>
@@ -105,10 +105,10 @@ export default function NotificationDropdown() {
                                 >
                                     <div className={`mt-0.5 w-2 h-2 rounded-full flex-shrink-0 ${notif.read ? 'bg-transparent border border-gray-300' : 'bg-primary animate-pulse'}`} />
                                     <div className="flex-1 min-w-0">
-                                        <p className={`text-[13.5px] leading-snug ${notif.read ? 'text-festra-text-secondary font-medium' : 'text-festra-text-primary font-bold'}`}>
+                                        <p className={`text-[15.5px] leading-snug ${notif.read ? 'text-festra-text-secondary font-medium' : 'text-festra-text-primary font-bold'}`}>
                                             {notif.message}
                                         </p>
-                                        <div className="flex items-center gap-1.5 mt-1.5 text-xs text-gray-400 font-medium">
+                                        <div className="flex items-center gap-1.5 mt-1.5 text-[14px] text-gray-400 font-medium">
                                             <Clock className="w-3 h-3" />
                                             <span>{notif.time}</span>
                                         </div>
@@ -116,7 +116,7 @@ export default function NotificationDropdown() {
                                 </div>
                             ))
                         ) : (
-                            <div className="px-4 py-8 text-center text-sm text-festra-text-secondary">
+                            <div className="px-4 py-8 text-center text-[16px] text-festra-text-secondary">
                                 No new notifications.
                             </div>
                         )}
@@ -124,7 +124,7 @@ export default function NotificationDropdown() {
 
                     {/* Footer */}
                     <div className="p-2 border-t border-gray-100 bg-white">
-                        <button className="w-full py-2 text-sm font-bold text-festra-text-primary hover:text-primary transition-colors rounded-lg hover:bg-slate-50">
+                        <button className="w-full py-2 text-[16px] font-bold text-festra-text-primary hover:text-primary transition-colors rounded-lg hover:bg-slate-50">
                             View all
                         </button>
                     </div>

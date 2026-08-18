@@ -5,7 +5,7 @@ export default function Footer() {
 
     return (
         <footer className="w-full text-center py-4 px-6 mt-auto">
-            <div className="flex flex-col sm:flex-row items-center justify-center gap-2 sm:gap-6 text-xs text-festra-text-secondary select-none">
+            <div className="flex flex-col sm:flex-row items-center justify-center gap-2 sm:gap-6 text-[14px] text-festra-text-secondary select-none">
                 <span>&copy; {currentYear} Festra. All rights reserved.</span>
                 <div className="flex items-center gap-4">
                     <a

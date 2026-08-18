@@ -5,7 +5,7 @@ export default function Logo({ size = 'md', showText = true, className = '', tex
     const isSmall = size === 'sm';
 
     const iconSize = isLarge ? 'h-12 w-12' : isSmall ? 'h-7 w-7' : 'h-9 w-9';
-    const textSize = isLarge ? 'text-3xl sm:text-4xl' : isSmall ? 'text-lg' : 'text-2xl';
+    const textSize = isLarge ? 'text-[32px] sm:text-[38px]' : isSmall ? 'text-[20px]' : 'text-[26px]';
 
     return (
         <div className={`flex items-center gap-3.5 select-none ${className}`}>

@@ -25,13 +25,13 @@ export default function AuthLayout({ children }) {
                     <div className="flex-1 flex flex-col justify-center items-center max-w-lg lg:max-w-xl xl:max-w-2xl 2xl:max-w-3xl mx-auto w-full py-6">
                         {/* Heading & description composition */}
                         <div className="space-y-4 md:space-y-6 mb-8 lg:mb-12 text-center animate-fade-in-up" style={{ animationDelay: '0.2s' }}>
-                            <h1 className="text-4xl lg:text-5xl xl:text-5.5xl font-extrabold text-white tracking-tight leading-tight">
+                            <h1 className="text-[38px] lg:text-[50px] xl:text-5.5xl font-extrabold text-white tracking-tight leading-tight">
                                 Every Event.{' '}
                                 <span className="bg-gradient-to-r from-[#FCE7F3] via-light-purple to-[#EC4899] bg-clip-text text-transparent drop-shadow-sm block sm:inline mt-2 sm:mt-0">
                                     One Experience.
                                 </span>
                             </h1>
-                            <p className="text-base lg:text-lg xl:text-xl text-[#D9D6FE] leading-relaxed font-normal px-2 max-w-xl mx-auto">
+                            <p className="text-[18px] lg:text-[20px] xl:text-[22px] text-[#D9D6FE] leading-relaxed font-normal px-2 max-w-xl mx-auto">
                                 Discover, organize, and manage events effortlessly &mdash; from registration to attendance and certificates.
                             </p>
                         </div>

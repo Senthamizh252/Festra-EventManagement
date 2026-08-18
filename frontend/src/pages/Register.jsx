@@ -83,21 +83,21 @@ export default function Register() {
             <AuthCard>
                 {/* REGISTRATION HEADER */}
                 <div className="text-center mb-6">
-                    <h2 className="text-2.5xl sm:text-[27px] font-black font-sans text-festra-text-primary tracking-tight">
+                    <h2 className="text-2.5xl sm:text-[29px] font-black font-sans text-festra-text-primary tracking-tight">
                         Create Your Account ✨
                     </h2>
-                    <p className="text-sm sm:text-base text-festra-text-secondary mt-1.5 font-medium">
+                    <p className="text-[16px] sm:text-[18px] text-festra-text-secondary mt-1.5 font-medium">
                         Join Festra and start managing your events
                     </p>
                 </div>
 
                 {/* BANNER NOTIFICATION */}
                 {successMessage && (
-                    <div className="mb-6 p-4 rounded-xl bg-emerald-50 border border-emerald-100 text-emerald-800 text-xs font-semibold flex items-start gap-2.5 animate-fade-in-up">
+                    <div className="mb-6 p-4 rounded-xl bg-emerald-50 border border-emerald-100 text-emerald-800 text-[14px] font-semibold flex items-start gap-2.5 animate-fade-in-up">
                         <CheckCircle className="h-4 w-4 text-[#10B981] flex-shrink-0" />
                         <div>
                             <p>{successMessage}</p>
-                            <p className="text-[10px] text-emerald-600/90 font-medium mt-1">Directing you to login screen...</p>
+                            <p className="text-[12px] text-emerald-600/90 font-medium mt-1">Directing you to login screen...</p>
                         </div>
                     </div>
                 )}
@@ -152,7 +152,7 @@ export default function Register() {
 
                     {/* ROLE SELECT SEGMENTS */}
                     <div className="flex flex-col gap-2">
-                        <span className="text-[13px] sm:text-sm font-semibold text-festra-text-primary tracking-wide block">
+                        <span className="text-[15px] sm:text-[16px] font-semibold text-festra-text-primary tracking-wide block">
                             Choose your role <span className="text-festra-error">*</span>
                         </span>
 
@@ -164,7 +164,7 @@ export default function Register() {
                                     setRole('Participant');
                                     if (errors.role) setErrors({ ...errors, role: null });
                                 }}
-                                className={`py-3 px-4.5 rounded-xl border-2 text-center transition-all cursor-pointer font-bold text-sm focus:outline-none focus:ring-2 focus:ring-primary/20 ${role === 'Participant'
+                                className={`py-3 px-4.5 rounded-xl border-2 text-center transition-all cursor-pointer font-bold text-[16px] focus:outline-none focus:ring-2 focus:ring-primary/20 ${role === 'Participant'
                                     ? 'border-primary bg-primary/5 text-primary shadow-xs'
                                     : 'border-slate-150 bg-white text-festra-text-secondary hover:border-slate-350 hover:bg-slate-50/50 hover:text-festra-text-primary'
                                     }`}
@@ -179,7 +179,7 @@ export default function Register() {
                                     setRole('Organizer');
                                     if (errors.role) setErrors({ ...errors, role: null });
                                 }}
-                                className={`py-3 px-4.5 rounded-xl border-2 text-center transition-all cursor-pointer font-bold text-sm focus:outline-none focus:ring-2 focus:ring-primary/20 ${role === 'Organizer'
+                                className={`py-3 px-4.5 rounded-xl border-2 text-center transition-all cursor-pointer font-bold text-[16px] focus:outline-none focus:ring-2 focus:ring-primary/20 ${role === 'Organizer'
                                     ? 'border-primary bg-primary/5 text-primary shadow-xs'
                                     : 'border-slate-150 bg-white text-festra-text-secondary hover:border-slate-350 hover:bg-slate-50/50 hover:text-festra-text-primary'
                                     }`}
@@ -188,7 +188,7 @@ export default function Register() {
                             </button>
                         </div>
                         {errors.role && (
-                            <span className="text-xs text-festra-error flex items-center gap-1 mt-1 animate-fade-in-up" role="alert">
+                            <span className="text-[14px] text-festra-error flex items-center gap-1 mt-1 animate-fade-in-up" role="alert">
                                 <AlertCircle className="w-3.5 h-3.5 flex-shrink-0" />
                                 <span>{errors.role}</span>
                             </span>
@@ -227,7 +227,7 @@ export default function Register() {
 
                         {/* PASSWORDS MATCH SUBTLE SUCCESS GRAPHIC */}
                         {confirmPassword && password === confirmPassword && !errors.confirmPassword && (
-                            <span className="text-[11px] text-emerald-600 flex items-center gap-1.5 mt-1.5 font-bold animate-fade-in-up">
+                            <span className="text-[13px] text-emerald-600 flex items-center gap-1.5 mt-1.5 font-bold animate-fade-in-up">
                                 <CheckCircle className="w-3.5 h-3.5 text-emerald-500 flex-shrink-0" />
                                 <span>Passwords match</span>
                             </span>
@@ -249,7 +249,7 @@ export default function Register() {
 
                 {/* TRANSITION BACK TO LOGIN */}
                 <div className="mt-8 pt-7 border-t border-slate-100 flex flex-col items-center gap-4">
-                    <p className="text-sm sm:text-[15px] font-semibold text-festra-text-secondary">
+                    <p className="text-[16px] sm:text-[17px] font-semibold text-festra-text-secondary">
                         Already have an account?
                     </p>
                     <Button

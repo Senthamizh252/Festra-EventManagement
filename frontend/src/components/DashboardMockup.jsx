@@ -51,7 +51,7 @@ export default function DashboardMockup() {
                         <span className="w-3 h-3 rounded-full bg-yellow-400/90 shadow-sm"></span>
                         <span className="w-3 h-3 rounded-full bg-green-400/90 shadow-sm"></span>
                     </div>
-                    <div className="text-[10px] font-semibold text-gray-400 font-sans tracking-wider flex items-center gap-1 bg-white px-3 py-0.5 rounded-full border border-gray-100">
+                    <div className="text-[12px] font-semibold text-gray-400 font-sans tracking-wider flex items-center gap-1 bg-white px-3 py-0.5 rounded-full border border-gray-100">
                         <span className="w-1.5 h-1.5 rounded-full bg-green-500 animate-pulse"></span>
                         dashboard.festra.com
                     </div>
@@ -64,21 +64,21 @@ export default function DashboardMockup() {
                     {/* Main overview banner (Colspan 3) */}
                     <div className="col-span-3 bg-gradient-to-r from-primary via-secondary to-accent/90 rounded-xl p-4 text-white flex justify-between items-center relative overflow-hidden shadow-inner">
                         <div className="relative z-10">
-                            <span className="text-[9px] font-bold tracking-widest bg-white/20 px-2.5 py-0.5 rounded-full uppercase">
+                            <span className="text-[11px] font-bold tracking-widest bg-white/20 px-2.5 py-0.5 rounded-full uppercase">
                                 Active Event
                             </span>
-                            <h4 className="text-base font-extrabold mt-1.5 font-sans leading-tight tracking-tight">
+                            <h4 className="text-[18px] font-extrabold mt-1.5 font-sans leading-tight tracking-tight">
                                 Tech Summit 2026
                             </h4>
-                            <p className="text-[10px] text-white/80 mt-0.5 font-medium">
+                            <p className="text-[12px] text-white/80 mt-0.5 font-medium">
                                 Hosted by Festra Organizers
                             </p>
                         </div>
 
                         {/* Calendar Widget Overlay */}
                         <div className="bg-white/15 backdrop-blur-md rounded-xl p-2.5 text-center text-white min-w-[55px] relative z-10 border border-white/10 shadow-sm">
-                            <span className="text-[8px] font-black uppercase tracking-wider block text-pink-200">AUG</span>
-                            <span className="text-xl font-black block leading-none">24</span>
+                            <span className="text-[10px] font-black uppercase tracking-wider block text-pink-200">AUG</span>
+                            <span className="text-[22px] font-black block leading-none">24</span>
                         </div>
 
                         {/* Sparkles Decorative overlay */}
@@ -88,16 +88,16 @@ export default function DashboardMockup() {
                     {/* Registrations Chart Panel container */}
                     <div className="col-span-2 bg-gray-50/60 rounded-xl border border-gray-100/80 p-3.5 flex flex-col justify-between">
                         <div className="flex justify-between items-center">
-                            <span className="text-[9px] font-bold text-festra-text-secondary uppercase tracking-wider">
+                            <span className="text-[11px] font-bold text-festra-text-secondary uppercase tracking-wider">
                                 Growth Stats
                             </span>
-                            <span className="text-[9px] text-[#10B981] font-bold bg-[#10B981]/10 px-1.5 py-0.5 rounded-full flex items-center gap-0.5">
+                            <span className="text-[11px] text-[#10B981] font-bold bg-[#10B981]/10 px-1.5 py-0.5 rounded-full flex items-center gap-0.5">
                                 <BarChart3 className="w-2.5 h-2.5" /> +14.2%
                             </span>
                         </div>
                         <div className="flex items-baseline gap-1 mt-2.5">
-                            <span className="text-xl font-black text-festra-text-primary tracking-tight">1,248</span>
-                            <span className="text-[9px] text-festra-text-secondary font-medium">reg. this week</span>
+                            <span className="text-[22px] font-black text-festra-text-primary tracking-tight">1,248</span>
+                            <span className="text-[11px] text-festra-text-secondary font-medium">reg. this week</span>
                         </div>
 
                         {/* Mini Registration Bar Chart representation */}
@@ -117,41 +117,41 @@ export default function DashboardMockup() {
                         <div className="p-2 bg-primary/10 rounded-xl text-primary mb-1.5 shadow-sm">
                             <Calendar className="h-4.5 w-4.5" />
                         </div>
-                        <span className="text-[10px] font-bold text-festra-text-primary">Schedule</span>
-                        <span className="text-[8px] font-semibold text-festra-text-secondary mt-0.5">3 Tracks</span>
+                        <span className="text-[12px] font-bold text-festra-text-primary">Schedule</span>
+                        <span className="text-[10px] font-semibold text-festra-text-secondary mt-0.5">3 Tracks</span>
                     </div>
 
                     {/* Attended Users real time (Colspan 2) */}
                     <div className="col-span-2 bg-gray-50/60 rounded-xl border border-gray-100/80 p-3">
                         <div className="flex justify-between items-center mb-2.5">
-                            <span className="text-[9px] font-bold text-festra-text-secondary uppercase tracking-wider">
+                            <span className="text-[11px] font-bold text-festra-text-secondary uppercase tracking-wider">
                                 Live Attendees
                             </span>
-                            <span className="text-[8px] font-bold text-primary bg-primary/10 px-1.5 py-0.5 rounded-full flex items-center gap-1">
+                            <span className="text-[10px] font-bold text-primary bg-primary/10 px-1.5 py-0.5 rounded-full flex items-center gap-1">
                                 <span className="w-1 h-1 rounded-full bg-primary animate-ping"></span> Live check-in
                             </span>
                         </div>
                         <div className="flex flex-col gap-2">
                             <div className="flex items-center justify-between bg-white p-2 rounded-lg border border-gray-100 shadow-2xs">
                                 <div className="flex items-center gap-2">
-                                    <div className="w-5 h-5 rounded-full bg-accent/15 text-accent text-[9px] font-bold flex items-center justify-center">
+                                    <div className="w-5 h-5 rounded-full bg-accent/15 text-accent text-[11px] font-bold flex items-center justify-center">
                                         JD
                                     </div>
-                                    <span className="text-[10px] font-bold text-festra-text-primary">John Doe</span>
+                                    <span className="text-[12px] font-bold text-festra-text-primary">John Doe</span>
                                 </div>
-                                <span className="text-[8px] font-bold bg-[#10B981]/10 text-[#10B981] px-2 py-0.5 rounded-full flex items-center gap-1">
+                                <span className="text-[10px] font-bold bg-[#10B981]/10 text-[#10B981] px-2 py-0.5 rounded-full flex items-center gap-1">
                                     <CheckCircle2 className="h-2 w-2" /> Verified
                                 </span>
                             </div>
 
                             <div className="flex items-center justify-between bg-white p-2 rounded-lg border border-gray-100 shadow-2xs">
                                 <div className="flex items-center gap-2">
-                                    <div className="w-5 h-5 rounded-full bg-primary/15 text-primary text-[9px] font-bold flex items-center justify-center">
+                                    <div className="w-5 h-5 rounded-full bg-primary/15 text-primary text-[11px] font-bold flex items-center justify-center">
                                         SR
                                     </div>
-                                    <span className="text-[10px] font-bold text-festra-text-primary">Sarah R.</span>
+                                    <span className="text-[12px] font-bold text-festra-text-primary">Sarah R.</span>
                                 </div>
-                                <span className="text-[8px] font-bold bg-[#10B981]/10 text-[#10B981] px-2 py-0.5 rounded-full flex items-center gap-1">
+                                <span className="text-[10px] font-bold bg-[#10B981]/10 text-[#10B981] px-2 py-0.5 rounded-full flex items-center gap-1">
                                     <CheckCircle2 className="h-2 w-2" /> Verified
                                 </span>
                             </div>
@@ -163,8 +163,8 @@ export default function DashboardMockup() {
                         <div className="p-2 bg-accent/10 rounded-xl text-accent mb-1.5 shadow-sm">
                             <QrCode className="h-4.5 w-4.5" />
                         </div>
-                        <span className="text-[10px] font-bold text-festra-text-primary">Scanner</span>
-                        <span className="text-[8px] text-[#10B981] font-bold mt-0.5">Active</span>
+                        <span className="text-[12px] font-bold text-festra-text-primary">Scanner</span>
+                        <span className="text-[10px] text-[#10B981] font-bold mt-0.5">Active</span>
                     </div>
 
                 </div>
@@ -177,13 +177,13 @@ export default function DashboardMockup() {
                     <Ticket className="h-5 w-5" />
                 </div>
                 <div className="flex-1 min-w-0">
-                    <span className="text-[8px] font-bold text-festra-text-secondary uppercase tracking-wider block">
+                    <span className="text-[10px] font-bold text-festra-text-secondary uppercase tracking-wider block">
                         VIP Pass
                     </span>
-                    <h5 className="text-[11px] font-black text-festra-text-primary mt-0.5 leading-tight truncate">
+                    <h5 className="text-[13px] font-black text-festra-text-primary mt-0.5 leading-tight truncate">
                         Tech Pass Verified
                     </h5>
-                    <span className="text-[9px] font-semibold text-primary block mt-0.5">
+                    <span className="text-[11px] font-semibold text-primary block mt-0.5">
                         Active Entry
                     </span>
                 </div>

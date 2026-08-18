@@ -52,7 +52,7 @@ export default function ForgotPassword() {
                 {/* Branding Top */}
                 <div className="mb-6 flex flex-col items-center text-center animate-fade-in-up" style={{ animationDelay: '0.1s' }}>
                     <Logo size="lg" />
-                    <p className="mt-3 text-[#5B4BDB] font-semibold text-sm tracking-wide bg-white/40 px-3 py-1 rounded-full backdrop-blur-sm border border-white/50">
+                    <p className="mt-3 text-[#5B4BDB] font-semibold text-[16px] tracking-wide bg-white/40 px-3 py-1 rounded-full backdrop-blur-sm border border-white/50">
                         Every Event. One Experience.
                     </p>
                 </div>
@@ -63,10 +63,10 @@ export default function ForgotPassword() {
                         <>
                             {/* Header */}
                             <div className="text-center mb-6">
-                                <h2 className="text-2xl sm:text-[25px] font-black font-sans text-festra-text-primary tracking-tight">
+                                <h2 className="text-[26px] sm:text-[27px] font-black font-sans text-festra-text-primary tracking-tight">
                                     Forgot Password 🔐
                                 </h2>
-                                <p className="text-[13.5px] sm:text-[15px] text-festra-text-secondary mt-2 font-medium leading-relaxed">
+                                <p className="text-[15.5px] sm:text-[17px] text-festra-text-secondary mt-2 font-medium leading-relaxed">
                                     Don't worry! Enter your email address and we'll help you reset your password.
                                 </p>
                             </div>
@@ -88,7 +88,7 @@ export default function ForgotPassword() {
                                         error={error}
                                         required
                                     />
-                                    <p className="text-[10px] text-gray-400 font-semibold text-center mt-2.5">
+                                    <p className="text-[12px] text-gray-400 font-semibold text-center mt-2.5">
                                         For your security, we'll never reveal whether an account exists.
                                     </p>
                                 </div>
@@ -110,10 +110,10 @@ export default function ForgotPassword() {
                             <div className="mx-auto w-16 h-16 bg-emerald-100 rounded-full flex items-center justify-center mb-5">
                                 <CheckCircle className="h-8 w-8 text-[#10B981]" />
                             </div>
-                            <h2 className="text-2xl font-black text-festra-text-primary mb-2.5">
+                            <h2 className="text-[26px] font-black text-festra-text-primary mb-2.5">
                                 Reset Link Sent!
                             </h2>
-                            <p className="text-sm font-medium text-festra-text-secondary leading-relaxed mb-6">
+                            <p className="text-[16px] font-medium text-festra-text-secondary leading-relaxed mb-6">
                                 We've sent password reset instructions to <span className="font-bold text-primary">{email}</span>. Please check your inbox.
                             </p>
                         </div>
@@ -121,7 +121,7 @@ export default function ForgotPassword() {
 
                     {/* Footer Nav */}
                     <div className="mt-8 pt-6 border-t border-slate-100 flex flex-col items-center gap-3">
-                        <p className="text-sm sm:text-[14.5px] font-semibold text-festra-text-secondary">
+                        <p className="text-[16px] sm:text-[16.5px] font-semibold text-festra-text-secondary">
                             Remember your password?
                         </p>
                         <Button
