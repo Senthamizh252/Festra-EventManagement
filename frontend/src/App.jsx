@@ -19,9 +19,16 @@ export default function App() {
         <Route path="/register" element={<Register />} />
         <Route path="/forgot-password" element={<ForgotPassword />} />
 
-        {/* Dashboards (Role structures) */}
+        {/* Dashboards */}
         <Route path="/organizer/dashboard" element={<OrganizerDashboard />} />
-        <Route path="/participant/dashboard" element={<ParticipantDashboard />} />
+
+        {/* Participant Routes */}
+        <Route path="/participant-dashboard" element={<ParticipantDashboard />} />
+        <Route path="/events" element={<ParticipantDashboard />} /> {/* Placeholder */}
+        <Route path="/my-events" element={<ParticipantDashboard />} /> {/* Placeholder */}
+        <Route path="/my-qr-pass" element={<ParticipantDashboard />} /> {/* Placeholder */}
+        <Route path="/certificates" element={<ParticipantDashboard />} /> {/* Placeholder */}
+        <Route path="/profile" element={<ParticipantDashboard />} /> {/* Placeholder */}
 
         {/* Fallback route redirects to login */}
         <Route path="*" element={<Navigate to="/login" replace />} />

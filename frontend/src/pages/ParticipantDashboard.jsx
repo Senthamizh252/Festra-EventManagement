@@ -1,62 +1,143 @@
-import React from 'react';
-import { useNavigate } from 'react-router-dom';
-import Logo from '../components/Logo';
-import Button from '../components/Button';
+import React, { useState } from 'react';
+import ParticipantLayout from '../layouts/ParticipantLayout';
+import WelcomeSection from '../components/WelcomeSection';
+import StatsCard from '../components/StatsCard';
+import EventCard from '../components/EventCard';
+import QRPassCard from '../components/QRPassCard';
+import CertificateCard from '../components/CertificateCard';
+import { CalendarDays, Ticket, CalendarCheck, Award } from 'lucide-react';
+
+const mockEvents = [
+    {
+        id: 1,
+        title: "AI & Future Tech Summit",
+        date: "15 Sep 2026",
+        time: "10:00 AM",
+        location: "KSRCE Auditorium",
+        category: "Technology",
+        status: "Registered"
+    },
+    {
+        id: 2,
+        title: "Hackathon 2026",
+        date: "20 Sep 2026",
+        time: "9:00 AM",
+        location: "Innovation Hall",
+        category: "Hackathon",
+        status: "Registered"
+    }
+];
+
+const mockCertificates = [
+    { id: 1, title: 'AI Workshop 2026', date: 'Aug 10, 2026' },
+    { id: 2, title: 'Data Science Seminar', date: 'Jul 22, 2026' },
+];
+
+const categories = ['All', 'Technology', 'Workshop', 'Hackathon', 'Cultural', 'Sports', 'Seminar'];
 
 export default function ParticipantDashboard() {
-    const navigate = useNavigate();
+    const [activeCategory, setActiveCategory] = useState('All');
 
     return (
-        <div className="min-h-screen bg-festra-bg font-sans p-6 md:p-12 flex flex-col justify-between">
-            <div className="max-w-4xl mx-auto w-full">
-                {/* Header */}
-                <header className="flex justify-between items-center pb-6 border-b border-gray-200 mb-10">
-                    <Logo size="md" />
-                    <Button
-                        variant="outline"
-                        fullWidth={false}
-                        onClick={() => navigate('/login')}
-                    >
-                        Logout
-                    </Button>
-                </header>
+        <ParticipantLayout>
 
-                {/* Dashboard Title */}
-                <main className="bg-white rounded-2xl border border-gray-150 p-8 shadow-md">
-                    <div className="flex items-center gap-3 mb-6">
-                        <span className="p-2 bg-accent/15 text-accent rounded-xl font-bold text-sm">
-                            ROLE: PARTICIPANT
-                        </span>
-                    </div>
+            <div className="animate-fade-in-up space-y-6">
+                <WelcomeSection participantName="Senthamizh" />
 
-                    <h2 className="text-3xl font-extrabold text-festra-text-primary tracking-tight">
-                        Participant Dashboard
-                    </h2>
-                    <p className="text-festra-text-secondary mt-3 max-w-2xl leading-relaxed">
-                        Welcome to your Festra hub. This space allows you to browse public events, sign up for registrations, check in using your QR ticket/pass, receive announcements, and download certificates of attendance.
-                    </p>
+                {/* Statistics Grid */}
+                <div className="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-4 gap-6">
+                    <StatsCard
+                        icon={Ticket}
+                        value="12"
+                        label="Registered Events"
+                        bgClass="bg-[#EFF2FE]"
+                        colorClass="text-[#3B82F6]"
+                    />
+                    <StatsCard
+                        icon={CalendarDays}
+                        value="4"
+                        label="Upcoming Events"
+                        bgClass="bg-[#F3E8FF]"
+                        colorClass="text-[#9333EA]"
+                    />
+                    <StatsCard
+                        icon={CalendarCheck}
+                        value="8"
+                        label="Attended Events"
+                        bgClass="bg-[#ECFDF5]"
+                        colorClass="text-[#10B981]"
+                    />
+                    <StatsCard
+                        icon={Award}
+                        value="5"
+                        label="Certificates"
+                        bgClass="bg-[#FFF7ED]"
+                        colorClass="text-[#F97316]"
+                    />
+                </div>
 
-                    {/* Planned Features List Grid */}
-                    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 mt-8 pt-8 border-t border-gray-100">
-                        {[
-                            { title: 'Browse Events', desc: 'Find local and global workshops, conferences, and meetups.' },
-                            { title: 'Digital QR Ticket', desc: 'Scan code at entrance to check in instantly.' },
-                            { title: 'Notifications', desc: 'Get updates and alerts directly from organizers.' },
-                            { title: 'Earn Certifications', desc: 'Retrieve verifiable achievement certificates.' },
-                            { title: 'Leave Feedback', desc: 'Submit ratings and reviews to organizers.' },
-                        ].map((item, index) => (
-                            <div key={index} className="p-4 rounded-xl border border-gray-100 bg-gray-50/50 hover:bg-gray-50 transition-colors">
-                                <h4 className="font-bold text-festra-text-primary text-sm">{item.title}</h4>
-                                <p className="text-xs text-festra-text-secondary mt-1">{item.desc}</p>
+                <div className="grid grid-cols-1 xl:grid-cols-3 gap-6 xl:gap-8 pt-2">
+
+                    {/* Left Column - Priority Events */}
+                    <div className="xl:col-span-2 space-y-5">
+                        <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 pb-2">
+                            <h2 className="text-[17px] font-bold text-festra-text-primary tracking-tight">
+                                Upcoming Events
+                            </h2>
+
+                            {/* Category Filter */}
+                            <div className="flex gap-2 overflow-x-auto scrollbar-none">
+                                {categories.map(cat => (
+                                    <button
+                                        key={cat}
+                                        onClick={() => setActiveCategory(cat)}
+                                        className={`px-3.5 py-1.5 rounded-[10px] text-[12.5px] font-bold whitespace-nowrap transition-colors flex-shrink-0 ${activeCategory === cat
+                                            ? 'bg-[#5B4BDB] text-white shadow-sm'
+                                            : 'bg-transparent text-gray-500 hover:bg-white hover:text-festra-text-primary'
+                                            }`}
+                                    >
+                                        {cat}
+                                    </button>
+                                ))}
                             </div>
-                        ))}
+                        </div>
+
+                        <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
+                            {mockEvents.map(event => (
+                                <EventCard key={event.id} event={event} />
+                            ))}
+                        </div>
                     </div>
-                </main>
+
+                    {/* Right Column - Passes & Certs */}
+                    <div className="space-y-6">
+                        <div>
+                            <h2 className="text-[17px] font-bold text-festra-text-primary tracking-tight mb-4">
+                                Active QR Pass
+                            </h2>
+                            <QRPassCard
+                                title="AI & Future Tech Summit"
+                                participant="Senthamizh"
+                                date="15 Sep 2026"
+                            />
+                        </div>
+
+                        <div>
+                            <h2 className="text-[17px] font-bold text-festra-text-primary tracking-tight mb-4">
+                                Recent Certificates
+                            </h2>
+                            <div className="space-y-3.5">
+                                {mockCertificates.map(cert => (
+                                    <CertificateCard key={cert.id} title={cert.title} date={cert.date} />
+                                ))}
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+
             </div>
 
-            <footer className="text-center text-xs text-festra-text-secondary mt-10">
-                &copy; 2026 Festra. All rights reserved.
-            </footer>
-        </div>
+        </ParticipantLayout>
     );
 }

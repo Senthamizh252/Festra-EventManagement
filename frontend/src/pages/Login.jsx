@@ -56,7 +56,7 @@ export default function Login() {
                 if (email.toLowerCase().includes('organizer')) {
                     navigate('/organizer/dashboard');
                 } else {
-                    navigate('/participant/dashboard');
+                    navigate('/participant-dashboard');
                 }
             }, 1800);
         }, 1500);
