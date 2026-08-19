@@ -84,7 +84,15 @@ export default function EventDetails() {
 
                         {/* Action Buttons */}
                         <div className="flex flex-shrink-0 gap-3">
-                            {event.status === 'Registered' && !event.isCompleted && (
+                            {(event.registrationStatus === 'NOT_REGISTERED' || (!event.registrationStatus && event.status !== 'Registered' && event.status !== 'Completed' && event.status !== 'Cancelled')) && (
+                                <button
+                                    onClick={() => navigate(`/events/${event.id}/register`)}
+                                    className="px-6 py-3 bg-gradient-to-r from-primary to-[#7C3AED] text-white font-bold text-[15px] rounded-xl hover:shadow-lg hover:-translate-y-0.5 transition-all w-full md:w-auto text-center"
+                                >
+                                    Register Now
+                                </button>
+                            )}
+                            {(event.registrationStatus === 'REGISTERED' || event.status === 'Registered') && (
                                 <button
                                     onClick={() => navigate('/my-qr-pass')}
                                     className="px-6 py-3 bg-gradient-to-r from-primary to-[#7C3AED] text-white font-bold text-[15px] rounded-xl hover:shadow-lg hover:-translate-y-0.5 transition-all w-full md:w-auto text-center"
@@ -92,7 +100,7 @@ export default function EventDetails() {
                                     View QR Pass
                                 </button>
                             )}
-                            {event.isCompleted && event.certificateAvailable && (
+                            {(event.registrationStatus === 'COMPLETED' || event.status === 'Completed') && event.certificateAvailable && (
                                 <button
                                     onClick={() => navigate('/certificates')}
                                     className="px-6 py-3 bg-emerald-500 text-white font-bold text-[15px] rounded-xl hover:shadow-lg hover:-translate-y-0.5 transition-all w-full md:w-auto text-center flex items-center justify-center gap-2"
@@ -264,8 +272,11 @@ export default function EventDetails() {
                             <div className="space-y-4">
                                 <div className="flex justify-between items-center text-[15px]">
                                     <span className="text-gray-500 font-semibold">Status</span>
-                                    <span className={`px-2.5 py-1 rounded-md text-[13px] font-bold ${event.status === 'Registered' ? 'bg-emerald-50 text-emerald-600' : 'bg-blue-50 text-blue-600'}`}>
-                                        {event.status}
+                                    <span className={`px-2.5 py-1 rounded-md text-[13px] font-bold ${(event.registrationStatus === 'REGISTERED' || event.status === 'Registered') ? 'bg-emerald-50 text-emerald-600' :
+                                        (event.registrationStatus === 'NOT_REGISTERED' || event.status === 'Open') ? 'bg-blue-50 text-blue-600' :
+                                            (event.registrationStatus === 'CANCELLED' || event.status === 'Cancelled') ? 'bg-red-50 text-red-600' : 'bg-gray-100 text-gray-600'
+                                        }`}>
+                                        {(event.registrationStatus || event.status).replace('_', ' ')}
                                     </span>
                                 </div>
                                 <div className="flex justify-between items-center text-[15px]">

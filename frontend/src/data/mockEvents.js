@@ -65,7 +65,7 @@ export const mockEvents = [
         contactEmail: "techclub@example.com",
         contactNumber: "+91 98765 43210",
         certificateAvailable: true,
-        isCompleted: false
+        registrationStatus: "REGISTERED"
     },
     {
         id: 2,
@@ -96,7 +96,7 @@ export const mockEvents = [
         contactEmail: "codingclub@example.com",
         contactNumber: "+91 87654 32109",
         certificateAvailable: true,
-        isCompleted: false
+        registrationStatus: "REGISTERED"
     },
     {
         id: 3,
@@ -125,7 +125,7 @@ export const mockEvents = [
         contactEmail: "datascience@example.com",
         contactNumber: "+91 76543 21098",
         certificateAvailable: false,
-        isCompleted: false
+        registrationStatus: "NOT_REGISTERED"
     },
     {
         id: 4,
@@ -154,7 +154,7 @@ export const mockEvents = [
         contactEmail: "arts@example.com",
         contactNumber: "+91 65432 10987",
         certificateAvailable: false,
-        isCompleted: false
+        registrationStatus: "NOT_REGISTERED"
     },
     {
         id: 5,
@@ -183,6 +183,96 @@ export const mockEvents = [
         contactEmail: "sports@example.com",
         contactNumber: "+91 54321 09876",
         certificateAvailable: true,
-        isCompleted: true
+        registrationStatus: "COMPLETED"
+    },
+    {
+        id: 7,
+        title: "Robotics Exhibition",
+        category: "Exhibition",
+        image: "https://images.unsplash.com/photo-1485827404703-89b55fcc595e?w=800&q=80",
+        date: "28 October 2026",
+        time: "10:00 AM - 04:00 PM",
+        conductedBy: "Robotics Society",
+        description: "Explore the latest models in AI-driven robotics. The exhibition includes battle bots, autonomous drones, and humanoid interactions.",
+        venue: "Main Hall",
+        address: "K.S.R. College of Engineering",
+        city: "Tiruchengode",
+        status: "Open",
+        maxParticipants: 800,
+        registrationDeadline: "25 October 2026",
+        schedule: [
+            { time: "10:00 AM", title: "Gates Open" },
+            { time: "01:00 PM", title: "Drone Racing" }
+        ],
+        rules: ["Do not touch the operational robots.", "Photography is allowed."],
+        certificateAvailable: false,
+        registrationStatus: "NOT_REGISTERED"
+    },
+    {
+        id: 8,
+        title: "Startup Pitch Deck",
+        category: "Competition",
+        image: "https://images.unsplash.com/photo-1559136555-9303baea8ebd?w=800&q=80",
+        date: "02 November 2026",
+        time: "11:30 AM - 02:30 PM",
+        conductedBy: "Entrepreneurship Cell",
+        description: "Pitch your startup idea to a panel of angel investors and win seed funding up to $10,000.",
+        venue: "Auditorium A",
+        address: "K.S.R. College of Engineering",
+        city: "Tiruchengode",
+        status: "Open",
+        maxParticipants: 50,
+        registrationDeadline: "30 October 2026",
+        schedule: [
+            { time: "11:30 AM", title: "Pitching Starts" }
+        ],
+        rules: ["Strict 5-minute pitch limit."],
+        certificateAvailable: true,
+        registrationStatus: "NOT_REGISTERED"
+    },
+    {
+        id: 9,
+        title: "Design UX/UI Sprint",
+        category: "Workshop",
+        image: "https://images.unsplash.com/photo-1561070791-2526d30994b5?w=800&q=80",
+        date: "10 November 2026",
+        time: "09:00 AM - 05:00 PM",
+        conductedBy: "Creative Tech",
+        description: "An intensive full-day design sprint covering UX research methods and UI prototyping in Figma.",
+        venue: "Design Studio",
+        address: "K.S.R. College of Engineering",
+        city: "Tiruchengode",
+        status: "Open",
+        maxParticipants: 100,
+        registrationDeadline: "08 November 2026",
+        schedule: [
+            { time: "09:00 AM", title: "Intro to UX" }
+        ],
+        rules: ["Bring your laptop with Figma installed."],
+        certificateAvailable: true,
+        registrationStatus: "NOT_REGISTERED"
+    },
+    {
+        id: 10,
+        title: "Winter Code-A-Thon",
+        category: "Hackathon",
+        image: "https://images.unsplash.com/photo-1522071820081-009f0129c71c?w=800&q=80",
+        date: "15 December 2026",
+        time: "08:00 AM - 08:00 AM",
+        conductedBy: "Coding Club",
+        description: "Our massive annual 24-hour winter hackathon. Food, drinks, and massive cash prizes are waiting!",
+        venue: "Virtual & In-person",
+        address: "K.S.R. College of Engineering",
+        city: "Tiruchengode",
+        status: "Open",
+        maxParticipants: 1000,
+        registrationDeadline: "10 December 2026",
+        schedule: [
+            { time: "08:00 AM", title: "Kickoff" },
+            { time: "08:00 AM", title: "Next Day: Judging" }
+        ],
+        rules: ["Maximum 4 members per team."],
+        certificateAvailable: true,
+        registrationStatus: "NOT_REGISTERED"
     }
 ];

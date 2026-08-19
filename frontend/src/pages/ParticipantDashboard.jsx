@@ -70,6 +70,50 @@ const mockEvents = [
         organizer: "Cloud Tech Group",
         status: "Open",
         image: "https://images.unsplash.com/photo-1451187580459-43490279c0fa?w=800&q=80"
+    },
+    {
+        id: 7,
+        title: "Robotics Exhibition",
+        category: "Exhibition",
+        date: "28 October 2026",
+        time: "10:00 AM",
+        location: "Main Hall",
+        organizer: "Robotics Society",
+        status: "Open",
+        image: "https://images.unsplash.com/photo-1485827404703-89b55fcc595e?w=800&q=80"
+    },
+    {
+        id: 8,
+        title: "Startup Pitch Deck",
+        category: "Competition",
+        date: "02 November 2026",
+        time: "11:30 AM",
+        location: "Auditorium A",
+        organizer: "Entrepreneurship Cell",
+        status: "Open",
+        image: "https://images.unsplash.com/photo-1559136555-9303baea8ebd?w=800&q=80"
+    },
+    {
+        id: 9,
+        title: "Design UX/UI Sprint",
+        category: "Workshop",
+        date: "10 November 2026",
+        time: "09:00 AM",
+        location: "Design Studio",
+        organizer: "Creative Tech",
+        status: "Open",
+        image: "https://images.unsplash.com/photo-1561070791-2526d30994b5?w=800&q=80"
+    },
+    {
+        id: 10,
+        title: "Winter Code-A-Thon",
+        category: "Hackathon",
+        date: "15 December 2026",
+        time: "08:00 AM",
+        location: "Virtual & In-person",
+        organizer: "Coding Club",
+        status: "Open",
+        image: "https://images.unsplash.com/photo-1522071820081-009f0129c71c?w=800&q=80"
     }
 ];
 
@@ -125,11 +169,13 @@ export default function ParticipantDashboard() {
                     </div>
 
                     <div className="flex gap-6 overflow-x-auto pb-6 snap-x snap-mandatory [scrollbar-width:none] [-ms-overflow-style:none] [&::-webkit-scrollbar]:hidden">
-                        {mockEvents.map(event => (
-                            <div key={event.id} className="snap-start shrink-0 w-[280px] sm:w-[320px] md:w-[380px]">
-                                <EventCard event={event} />
-                            </div>
-                        ))}
+                        {mockEvents
+                            .filter(event => event.status !== 'Registered' && event.status !== 'Completed' && event.status !== 'Cancelled')
+                            .map(event => (
+                                <div key={event.id} className="snap-start shrink-0 w-[280px] sm:w-[320px] md:w-[380px]">
+                                    <EventCard event={event} />
+                                </div>
+                            ))}
                     </div>
                 </div>
             </div>

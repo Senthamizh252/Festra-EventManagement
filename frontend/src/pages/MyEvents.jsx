@@ -14,9 +14,12 @@ export default function MyEvents() {
 
     // Filter events
     const filteredEvents = mockEvents.filter(event => {
+        // Exclude completely unregistered events from My Events filtering (they belong in Explore)
+        if (event.registrationStatus === 'NOT_REGISTERED' || event.status === 'Open') return false;
+
         // Tab filter
-        if (activeTab === 'Upcoming' && event.isCompleted) return false;
-        if (activeTab === 'Completed' && !event.isCompleted) return false;
+        if (activeTab === 'Upcoming' && (event.registrationStatus === 'COMPLETED' || event.status === 'Completed')) return false;
+        if (activeTab === 'Completed' && (event.registrationStatus !== 'COMPLETED' && event.status !== 'Completed')) return false;
 
         // Category filter
         if (activeCategory !== 'All Categories' && event.category !== activeCategory) return false;
@@ -52,8 +55,8 @@ export default function MyEvents() {
                                     key={tab}
                                     onClick={() => setActiveTab(tab)}
                                     className={`px-5 py-2 rounded-lg text-[14.5px] font-bold transition-all whitespace-nowrap ${activeTab === tab
-                                            ? 'bg-white text-primary shadow-sm'
-                                            : 'text-gray-500 hover:text-gray-700 hover:bg-white/50'
+                                        ? 'bg-white text-primary shadow-sm'
+                                        : 'text-gray-500 hover:text-gray-700 hover:bg-white/50'
                                         }`}
                                 >
                                     {tab === 'All' ? 'All Events' : tab}
@@ -82,8 +85,8 @@ export default function MyEvents() {
                                     key={category}
                                     onClick={() => setActiveCategory(category)}
                                     className={`px-4 py-1.5 rounded-full text-[13.5px] font-bold transition-all border ${activeCategory === category
-                                            ? 'bg-primary text-white border-primary shadow-sm shadow-primary/20'
-                                            : 'bg-white text-gray-600 border-gray-200 hover:border-primary/30 hover:bg-[#F4F1FF]'
+                                        ? 'bg-primary text-white border-primary shadow-sm shadow-primary/20'
+                                        : 'bg-white text-gray-600 border-gray-200 hover:border-primary/30 hover:bg-[#F4F1FF]'
                                         }`}
                                 >
                                     {category}

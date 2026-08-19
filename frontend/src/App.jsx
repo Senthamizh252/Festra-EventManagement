@@ -7,6 +7,7 @@ import OrganizerDashboard from './pages/OrganizerDashboard';
 import ParticipantDashboard from './pages/ParticipantDashboard';
 import MyEvents from './pages/MyEvents';
 import EventDetails from './pages/EventDetails';
+import EventRegistration from './pages/EventRegistration';
 import './App.css';
 
 export default function App() {
@@ -27,6 +28,7 @@ export default function App() {
         {/* Participant Routes */}
         <Route path="/participant-dashboard" element={<ParticipantDashboard />} />
         <Route path="/events/:id" element={<EventDetails />} />
+        <Route path="/events/:id/register" element={<EventRegistration />} />
         <Route path="/my-events" element={<MyEvents />} />
         <Route path="/my-qr-pass" element={<ParticipantDashboard />} /> {/* Placeholder */}
         <Route path="/certificates" element={<ParticipantDashboard />} /> {/* Placeholder */}
