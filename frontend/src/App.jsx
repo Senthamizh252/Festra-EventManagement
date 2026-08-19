@@ -5,6 +5,8 @@ import Register from './pages/Register';
 import ForgotPassword from './pages/ForgotPassword';
 import OrganizerDashboard from './pages/OrganizerDashboard';
 import ParticipantDashboard from './pages/ParticipantDashboard';
+import MyEvents from './pages/MyEvents';
+import EventDetails from './pages/EventDetails';
 import './App.css';
 
 export default function App() {
@@ -24,8 +26,8 @@ export default function App() {
 
         {/* Participant Routes */}
         <Route path="/participant-dashboard" element={<ParticipantDashboard />} />
-        <Route path="/events" element={<ParticipantDashboard />} /> {/* Placeholder */}
-        <Route path="/my-events" element={<ParticipantDashboard />} /> {/* Placeholder */}
+        <Route path="/events/:id" element={<EventDetails />} />
+        <Route path="/my-events" element={<MyEvents />} />
         <Route path="/my-qr-pass" element={<ParticipantDashboard />} /> {/* Placeholder */}
         <Route path="/certificates" element={<ParticipantDashboard />} /> {/* Placeholder */}
         <Route path="/profile" element={<ParticipantDashboard />} /> {/* Placeholder */}

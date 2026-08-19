@@ -38,7 +38,7 @@ export default function Sidebar({ isOpen, setIsOpen }) {
             )}
 
             {/* Sidebar */}
-            <aside className={`fixed top-0 left-0 h-full w-[240px] bg-white border-r border-gray-150 shadow-[4px_0_24px_rgba(0,0,0,0.02)] z-50 flex flex-col transition-transform duration-300 ease-in-out ${isOpen ? 'translate-x-0' : '-translate-x-full'} lg:translate-x-0 lg:static`}>
+            <aside className={`fixed top-0 left-0 h-full w-[280px] bg-white border-r border-gray-150 shadow-[4px_0_24px_rgba(0,0,0,0.02)] z-50 flex flex-col transition-transform duration-300 ease-in-out ${isOpen ? 'translate-x-0' : '-translate-x-full'} lg:translate-x-0 lg:static`}>
 
                 {/* Header / Logo */}
                 <div className="h-16 flex items-center justify-between px-6 border-b border-gray-100">

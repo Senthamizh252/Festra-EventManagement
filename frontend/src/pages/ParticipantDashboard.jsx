@@ -3,8 +3,6 @@ import ParticipantLayout from '../layouts/ParticipantLayout';
 import WelcomeSection from '../components/WelcomeSection';
 import StatsCard from '../components/StatsCard';
 import EventCard from '../components/EventCard';
-import QRPassCard from '../components/QRPassCard';
-import CertificateCard from '../components/CertificateCard';
 import { CalendarDays, Ticket, CalendarCheck, Award, ArrowRight } from 'lucide-react';
 
 const mockEvents = [
@@ -39,20 +37,47 @@ const mockEvents = [
         location: "Seminar Hall",
         organizer: "Data Science Club",
         status: "Open",
-        image: "https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=800&q=80"
+    },
+    {
+        id: 4,
+        title: "Cyber Security Bootcamp",
+        category: "Bootcamp",
+        date: "05 October 2026",
+        time: "11:00 AM",
+        location: "Virtual",
+        organizer: "CyberSec Club",
+        status: "Open",
+        image: "https://images.unsplash.com/photo-1550751827-4bd374c3f58b?w=800&q=80"
+    },
+    {
+        id: 5,
+        title: "Web Development Masterclass",
+        category: "Workshop",
+        date: "12 October 2026",
+        time: "02:00 PM",
+        location: "Computer Lab 1",
+        organizer: "Web Dev Society",
+        status: "Registered",
+        image: "https://images.unsplash.com/photo-1627398246734-d2eab164cf88?w=800&q=80"
+    },
+    {
+        id: 6,
+        title: "Cloud Computing Basics",
+        category: "Seminar",
+        date: "20 October 2026",
+        time: "09:30 AM",
+        location: "Seminar Hall 2",
+        organizer: "Cloud Tech Group",
+        status: "Open",
+        image: "https://images.unsplash.com/photo-1451187580459-43490279c0fa?w=800&q=80"
     }
-];
-
-const mockCertificates = [
-    { id: 1, title: 'AI Workshop 2026', date: 'Aug 10, 2026' },
-    { id: 2, title: 'Data Science Seminar', date: 'Jul 22, 2026' },
 ];
 
 export default function ParticipantDashboard() {
     return (
         <ParticipantLayout>
 
-            <div className="animate-fade-in-up space-y-10 pb-10">
+            <div className="animate-fade-in-up space-y-6 pb-10">
                 {/* 1. Welcome Section */}
                 <WelcomeSection participantName="Senthamizh" />
 
@@ -99,38 +124,14 @@ export default function ParticipantDashboard() {
                         </button>
                     </div>
 
-                    <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-6">
+                    <div className="flex gap-6 overflow-x-auto pb-6 snap-x snap-mandatory [scrollbar-width:none] [-ms-overflow-style:none] [&::-webkit-scrollbar]:hidden">
                         {mockEvents.map(event => (
-                            <EventCard key={event.id} event={event} />
+                            <div key={event.id} className="snap-start shrink-0 w-[280px] sm:w-[320px] md:w-[380px]">
+                                <EventCard event={event} />
+                            </div>
                         ))}
                     </div>
                 </div>
-
-                {/* 4. QR Pass / Certificate Area */}
-                <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 pt-2">
-                    <div className="space-y-4">
-                        <h2 className="text-[22px] font-bold text-festra-text-primary tracking-tight">
-                            Active QR Pass
-                        </h2>
-                        <QRPassCard
-                            title="AI & Future Tech Summit"
-                            participant="Senthamizh"
-                            date="15 Sep 2026"
-                        />
-                    </div>
-
-                    <div className="space-y-4">
-                        <h2 className="text-[22px] font-bold text-festra-text-primary tracking-tight">
-                            Recent Certificates
-                        </h2>
-                        <div className="space-y-4">
-                            {mockCertificates.map(cert => (
-                                <CertificateCard key={cert.id} title={cert.title} date={cert.date} />
-                            ))}
-                        </div>
-                    </div>
-                </div>
-
             </div>
 
         </ParticipantLayout>

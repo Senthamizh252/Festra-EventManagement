@@ -2,7 +2,7 @@ import React from 'react';
 
 export default function WelcomeSection({ participantName = 'Senthamizh' }) {
     return (
-        <div className="bg-gradient-to-r from-[#5B4BDB] via-[#7C3AED] to-[#EC4899] rounded-[24px] p-6 sm:p-8 text-white relative overflow-hidden shadow-lg shadow-primary/20 mb-6 z-0">
+        <div className="bg-gradient-to-r from-[#5B4BDB] via-[#7C3AED] to-[#EC4899] rounded-[24px] p-6 sm:p-8 text-white relative overflow-hidden shadow-lg shadow-primary/20 z-0">
             {/* Decorative Bg Patterns */}
             <div className="absolute top-0 right-0 -translate-y-1/2 translate-x-1/3 w-80 h-80 bg-white opacity-10 rounded-full blur-3xl z-0"></div>
             <div className="absolute bottom-0 left-0 translate-y-1/3 -translate-x-1/4 w-56 h-56 bg-pink-300 opacity-20 rounded-full blur-3xl z-0"></div>

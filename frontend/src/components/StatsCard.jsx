@@ -2,16 +2,16 @@ import React from 'react';
 
 export default function StatsCard({ icon: Icon, value, label, subtext, colorClass, bgClass }) {
     return (
-        <div className="bg-white rounded-[20px] p-6 h-full border border-gray-100 shadow-[0_2px_10px_rgba(0,0,0,0.02)] hover:-translate-y-1 hover:shadow-[0_8px_20px_rgba(0,0,0,0.06)] hover:border-gray-200 transition-all duration-300 flex flex-col justify-between">
-            <div className="flex items-start justify-between mb-5">
-                <div className={`p-3.5 rounded-[14px] ${bgClass} ${colorClass}`}>
-                    <Icon className="w-6 h-6 flex-shrink-0" />
+        <div className="bg-white rounded-2xl p-5 h-full border border-gray-100 shadow-sm hover:-translate-y-1 hover:shadow-md hover:border-gray-200 transition-all duration-300 flex flex-col justify-between">
+            <div className="flex items-center gap-3 mb-4">
+                <div className={`p-2.5 rounded-xl ${bgClass} ${colorClass}`}>
+                    <Icon className="w-5 h-5 flex-shrink-0" />
                 </div>
+                <p className="text-[15px] font-bold text-gray-600 leading-tight">{label}</p>
             </div>
             <div>
-                <h4 className="text-[38px] font-bold text-festra-text-primary tracking-tight leading-none mb-2">{value}</h4>
-                <p className="text-[16px] font-semibold text-gray-500">{label}</p>
-                {subtext && <p className="text-[14px] text-gray-400 mt-1">{subtext}</p>}
+                <h4 className="text-[32px] font-bold text-festra-text-primary tracking-tight leading-none mb-1">{value}</h4>
+                {subtext && <p className="text-[13px] text-gray-400">{subtext}</p>}
             </div>
         </div>
     );

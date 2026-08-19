@@ -16,7 +16,7 @@ export default function TopNavbar({ toggleSidebar }) {
                     <Menu className="w-6 h-6" />
                 </button>
 
-                <div className="relative w-full max-w-lg hidden lg:block">
+                <div className="relative w-full max-w-3xl hidden lg:block">
                     <Search className="absolute left-3.5 top-1/2 -translate-y-1/2 w-5 h-5 text-slate-400" />
                     <input
                         type="text"
