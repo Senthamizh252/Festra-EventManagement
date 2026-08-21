@@ -8,6 +8,7 @@ import ParticipantDashboard from './pages/ParticipantDashboard';
 import MyEvents from './pages/MyEvents';
 import EventDetails from './pages/EventDetails';
 import EventRegistration from './pages/EventRegistration';
+import MyQRPass from './pages/MyQRPass';
 import './App.css';
 
 export default function App() {
@@ -30,7 +31,7 @@ export default function App() {
         <Route path="/events/:id" element={<EventDetails />} />
         <Route path="/events/:id/register" element={<EventRegistration />} />
         <Route path="/my-events" element={<MyEvents />} />
-        <Route path="/my-qr-pass" element={<ParticipantDashboard />} /> {/* Placeholder */}
+        <Route path="/my-qr-pass" element={<MyQRPass />} />
         <Route path="/certificates" element={<ParticipantDashboard />} /> {/* Placeholder */}
         <Route path="/profile" element={<ParticipantDashboard />} /> {/* Placeholder */}
 
