@@ -1,0 +1,297 @@
+.dtc-wrapper {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 1rem;
+}
+
+.dtc-card {
+    width: 100%;
+    max-width: 420px;
+    background-color: var(--color-festra-card, #ffffff);
+    border-radius: 16px;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.05);
+    overflow: hidden;
+    position: relative;
+    font-family: var(--font-sans, 'Inter', sans-serif);
+    color: var(--color-festra-text-primary, #1F2937);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.dtc-card:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.08);
+}
+
+/* Top Section */
+.dtc-top {
+    padding: 24px 24px 20px 24px;
+}
+
+.dtc-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+.dtc-category {
+    font-size: 0.75rem;
+    font-weight: 700;
+    letter-spacing: 0.05em;
+    color: var(--color-primary, #5B4BDB);
+    background: var(--color-light-purple, #EDE9FE);
+    padding: 4px 10px;
+    border-radius: 12px;
+    text-transform: uppercase;
+}
+
+.dtc-status {
+    font-size: 0.8rem;
+    font-weight: 600;
+    color: var(--color-festra-success, #10B981);
+    display: flex;
+    align-items: center;
+    gap: 4px;
+}
+
+.dtc-event-info {
+    display: flex;
+    gap: 16px;
+    align-items: flex-start;
+}
+
+.dtc-image-wrapper {
+    flex-shrink: 0;
+    width: 72px;
+    height: 72px;
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.06);
+}
+
+.dtc-image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.dtc-image-placeholder {
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(135deg, var(--color-light-purple, #EDE9FE), var(--color-light-pink, #FCE7F3));
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 0.7rem;
+    color: var(--color-primary, #5B4BDB);
+    font-weight: 600;
+}
+
+.dtc-details {
+    flex-grow: 1;
+}
+
+.dtc-title {
+    font-size: 1.15rem;
+    font-weight: 700;
+    margin: 0 0 4px 0;
+    line-height: 1.3;
+}
+
+.dtc-organizer {
+    font-size: 0.85rem;
+    color: var(--color-festra-text-secondary, #6B7280);
+    margin: 0 0 12px 0;
+}
+
+.dtc-datetime {
+    display: flex;
+    gap: 16px;
+    margin-bottom: 8px;
+}
+
+.dtc-icon-text {
+    font-size: 0.85rem;
+    font-weight: 500;
+    display: flex;
+    align-items: center;
+    gap: 4px;
+}
+
+.dtc-venue {
+    font-size: 0.85rem;
+    font-weight: 500;
+    display: flex;
+    align-items: center;
+    gap: 4px;
+}
+
+/* Divider Section */
+.dtc-divider-container {
+    position: relative;
+    height: 2px;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    padding: 0 4px;
+}
+
+.dtc-divider {
+    width: 100%;
+    border-top: 2px dashed rgba(0, 0, 0, 0.15);
+}
+
+/* The Ticket Cutouts - Key Requirement */
+.dtc-divider-container::before,
+.dtc-divider-container::after {
+    content: '';
+    position: absolute;
+    top: 50%;
+    width: 40px;
+    height: 40px;
+    background-color: var(--color-festra-bg, #F8F7FF);
+    border-radius: 50%;
+    transform: translateY(-50%);
+    z-index: 2;
+    box-shadow: inset 0 0 4px rgba(0, 0, 0, 0.03);
+    /* Subtle depth so cutout feels real */
+}
+
+/* Left Cutout */
+.dtc-divider-container::before {
+    left: -20px;
+}
+
+/* Right Cutout */
+.dtc-divider-container::after {
+    right: -20px;
+}
+
+/* Bottom Section */
+.dtc-bottom {
+    padding: 20px 24px 24px 24px;
+    background-color: var(--color-festra-card, #ffffff);
+}
+
+.dtc-info-grid {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 24px;
+}
+
+.dtc-info-block {
+    display: flex;
+    flex-direction: column;
+}
+
+.dtc-info-block.text-right {
+    text-align: right;
+    align-items: flex-end;
+}
+
+.dtc-label {
+    font-size: 0.7rem;
+    font-weight: 600;
+    color: var(--color-festra-text-secondary, #6B7280);
+    letter-spacing: 0.05em;
+    margin-bottom: 4px;
+    text-transform: uppercase;
+}
+
+.dtc-value {
+    font-size: 1.05rem;
+    font-weight: 700;
+    color: var(--color-festra-text-primary, #1F2937);
+    margin-bottom: 2px;
+}
+
+.dtc-subtext {
+    font-size: 0.85rem;
+    color: var(--color-primary, #5B4BDB);
+    font-weight: 500;
+}
+
+.dtc-qr-section {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-bottom: 24px;
+}
+
+.dtc-qr-box {
+    width: 110px;
+    height: 110px;
+    padding: 8px;
+    background: white;
+    border-radius: 12px;
+    border: 1px solid rgba(0, 0, 0, 0.05);
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.03);
+    margin: 8px 0 12px 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.dtc-qr {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+}
+
+.dtc-qr-placeholder {
+    font-size: 1.2rem;
+    font-weight: 700;
+    color: #ccc;
+    letter-spacing: 2px;
+}
+
+.dtc-valid-badge {
+    background: linear-gradient(135deg, var(--color-festra-success, #10B981), #059669);
+    color: white;
+    padding: 4px 16px;
+    border-radius: 20px;
+    font-size: 0.8rem;
+    font-weight: 600;
+    letter-spacing: 0.05em;
+    box-shadow: 0 4px 10px rgba(16, 185, 129, 0.2);
+}
+
+.dtc-actions {
+    display: flex;
+    gap: 12px;
+}
+
+.dtc-btn {
+    flex: 1;
+    padding: 10px 16px;
+    border-radius: 8px;
+    font-size: 0.9rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    text-align: center;
+    border: none;
+    font-family: inherit;
+}
+
+.dtc-btn-outline {
+    background: transparent;
+    color: var(--color-primary, #5B4BDB);
+    border: 1.5px solid var(--color-light-purple, #EDE9FE);
+}
+
+.dtc-btn-outline:hover {
+    background: var(--color-light-purple, #EDE9FE);
+}
+
+.dtc-btn-primary {
+    background: linear-gradient(135deg, var(--color-primary, #5B4BDB), var(--color-accent, #EC4899));
+    color: white;
+    box-shadow: 0 4px 12px rgba(91, 75, 219, 0.25);
+}
+
+.dtc-btn-primary:hover {
+    box-shadow: 0 6px 16px rgba(91, 75, 219, 0.35);
+    transform: translateY(-1px);
+}
