@@ -2,11 +2,15 @@ import React from 'react';
 import { Calendar, User, ChevronRight, CheckCircle, XCircle } from 'lucide-react';
 import { useNavigate } from 'react-router-dom';
 
-export default function EventCard({ event }) {
+export default function EventCard({ event, isPastEvent = false }) {
     const navigate = useNavigate();
 
-    const handleViewDetails = () => {
-        navigate(`/events/${event.id}`);
+    const handleAction = () => {
+        if (isPastEvent) {
+            navigate('/certificates');
+        } else {
+            navigate(`/events/${event.id}`);
+        }
     };
 
     return (
@@ -56,10 +60,10 @@ export default function EventCard({ event }) {
 
                     {(event.registrationStatus === 'NOT_REGISTERED' || (!event.registrationStatus && event.status !== 'Registered' && event.status !== 'Completed' && event.status !== 'Cancelled')) && (
                         <button
-                            onClick={handleViewDetails}
+                            onClick={handleAction}
                             className="w-full flex items-center justify-center gap-2 px-4 py-2.5 bg-white border border-gray-200 text-gray-600 hover:text-primary hover:border-primary/30 hover:bg-primary/5 text-[14.5px] font-bold rounded-xl transition-all"
                         >
-                            View Details <ChevronRight className="w-4.5 h-4.5" />
+                            {isPastEvent ? 'View Certificate' : 'View Details'} <ChevronRight className="w-4.5 h-4.5" />
                         </button>
                     )}
 
@@ -68,8 +72,8 @@ export default function EventCard({ event }) {
                             <span className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-emerald-50 text-emerald-600 text-[13px] font-bold border border-emerald-100 shrink-0">
                                 <CheckCircle className="w-4 h-4" /> Registered
                             </span>
-                            <button onClick={handleViewDetails} className="text-[14.5px] font-bold text-primary hover:text-secondary flex items-center gap-1 transition-colors group/btn">
-                                View Details <ChevronRight className="w-4.5 h-4.5 group-hover/btn:translate-x-1 transition-transform" />
+                            <button onClick={handleAction} className="text-[14.5px] font-bold text-primary hover:text-secondary flex items-center gap-1 transition-colors group/btn">
+                                {isPastEvent ? 'View Certificate' : 'View Details'} <ChevronRight className="w-4.5 h-4.5 group-hover/btn:translate-x-1 transition-transform" />
                             </button>
                         </>
                     )}
@@ -79,8 +83,8 @@ export default function EventCard({ event }) {
                             <span className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-gray-50 text-gray-600 text-[13px] font-bold border border-gray-200 shrink-0">
                                 <CheckCircle className="w-4 h-4" /> Completed
                             </span>
-                            <button onClick={handleViewDetails} className="text-[14.5px] font-bold text-primary hover:text-secondary flex items-center gap-1 transition-colors group/btn">
-                                View Details <ChevronRight className="w-4.5 h-4.5 group-hover/btn:translate-x-1 transition-transform" />
+                            <button onClick={handleAction} className="text-[14.5px] font-bold text-primary hover:text-secondary flex items-center gap-1 transition-colors group/btn">
+                                {isPastEvent ? 'View Certificate' : 'View Details'} <ChevronRight className="w-4.5 h-4.5 group-hover/btn:translate-x-1 transition-transform" />
                             </button>
                         </>
                     )}
@@ -90,8 +94,8 @@ export default function EventCard({ event }) {
                             <span className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-red-50 text-red-600 text-[13px] font-bold border border-red-100 shrink-0">
                                 <XCircle className="w-4 h-4" /> Cancelled
                             </span>
-                            <button onClick={handleViewDetails} className="text-[14.5px] font-bold text-primary hover:text-secondary flex items-center gap-1 transition-colors group/btn">
-                                View Details <ChevronRight className="w-4.5 h-4.5 group-hover/btn:translate-x-1 transition-transform" />
+                            <button onClick={handleAction} className="text-[14.5px] font-bold text-primary hover:text-secondary flex items-center gap-1 transition-colors group/btn">
+                                {isPastEvent ? 'View Certificate' : 'View Details'} <ChevronRight className="w-4.5 h-4.5 group-hover/btn:translate-x-1 transition-transform" />
                             </button>
                         </>
                     )}

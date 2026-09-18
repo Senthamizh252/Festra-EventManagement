@@ -1,113 +1,111 @@
 import React, { useState } from 'react';
 import ParticipantLayout from '../layouts/ParticipantLayout';
 import EventCard from '../components/EventCard';
-import { Search } from 'lucide-react';
-import { mockEvents } from '../data/mockEvents';
+import './MyEvents.css';
 
 export default function MyEvents() {
-    const [searchQuery, setSearchQuery] = useState('');
-    const [activeTab, setActiveTab] = useState('All');
-    const [activeCategory, setActiveCategory] = useState('All Categories');
+    const [activeTab, setActiveTab] = useState('Upcoming');
 
-    const tabs = ['All', 'Upcoming', 'Completed'];
-    const categories = ['All Categories', 'Technology', 'Hackathon', 'Workshop', 'Seminar', 'Cultural', 'Sports'];
+    // Array of dummy data representing registered events
+    const dummyEvents = [
+        {
+            id: 1,
+            category: 'Technology',
+            eventName: 'Tech Nova 2026',
+            title: 'Tech Nova 2026', // Passed for compatibility with EventCard
+            organizer: 'Computer Science Dept',
+            date: 'Oct 15, 2026',
+            time: '10:00 AM',
+            venue: 'Main Auditorium',
+            image: 'https://images.unsplash.com/photo-1540575467063-178a50c2df87?w=500&auto=format&fit=crop&q=60',
+            status: 'upcoming',
+            registrationStatus: 'REGISTERED' // Compatibility with EventCard Badges
+        },
+        {
+            id: 2,
+            category: 'Workshop',
+            eventName: 'React Masterclass',
+            title: 'React Masterclass',
+            organizer: 'Web Dev Club',
+            date: 'Nov 02, 2026',
+            time: '02:00 PM',
+            venue: 'Lab 4',
+            image: 'https://images.unsplash.com/photo-1633356122544-f134324a6cee?w=500&auto=format&fit=crop&q=60',
+            status: 'upcoming',
+            registrationStatus: 'REGISTERED'
+        },
+        {
+            id: 3,
+            category: 'Cultural',
+            eventName: 'Festra Dance Night',
+            title: 'Festra Dance Night',
+            organizer: 'Arts Society',
+            date: 'Sep 01, 2026',
+            time: '06:00 PM',
+            venue: 'Open Air Theatre',
+            image: 'https://images.unsplash.com/photo-1516450360452-9312f5e86fc7?w=500&auto=format&fit=crop&q=60',
+            status: 'past',
+            registrationStatus: 'COMPLETED'
+        },
+        {
+            id: 4,
+            category: 'Hackathon',
+            eventName: 'CodeBrew 48Hrs',
+            title: 'CodeBrew 48Hrs',
+            organizer: 'Institution Innovation Council',
+            date: 'Aug 10, 2026',
+            time: '09:00 AM',
+            venue: 'Innovation Hub',
+            image: 'https://images.unsplash.com/photo-1504384308090-c894fdcc538d?w=500&auto=format&fit=crop&q=60',
+            status: 'past',
+            registrationStatus: 'COMPLETED'
+        }
+    ];
 
-    // Filter events
-    const filteredEvents = mockEvents.filter(event => {
-        // Exclude completely unregistered events from My Events filtering (they belong in Explore)
-        if (event.registrationStatus === 'NOT_REGISTERED' || event.status === 'Open') return false;
-
-        // Tab filter
-        if (activeTab === 'Upcoming' && (event.registrationStatus === 'COMPLETED' || event.status === 'Completed')) return false;
-        if (activeTab === 'Completed' && (event.registrationStatus !== 'COMPLETED' && event.status !== 'Completed')) return false;
-
-        // Category filter
-        if (activeCategory !== 'All Categories' && event.category !== activeCategory) return false;
-
-        // Search filter
-        if (searchQuery && !event.title.toLowerCase().includes(searchQuery.toLowerCase())) return false;
-
-        return true;
+    // Filter events array based on currently active tab
+    const filteredEvents = dummyEvents.filter(event => {
+        if (activeTab === 'Upcoming') {
+            return event.status === 'upcoming';
+        }
+        return event.status === 'past';
     });
 
     return (
         <ParticipantLayout>
-            <div className="animate-fade-in-up space-y-8 pb-10">
-                {/* Header */}
-                <div>
-                    <h1 className="text-[28px] font-bold text-festra-text-primary tracking-tight mb-2">
-                        My Events
+            <div className="my-events-container">
+                {/* Header Section */}
+                <header className="my-events-header">
+                    <h1 className="my-events-title">
+                        My Registered Events
                     </h1>
-                    <p className="text-gray-500 text-[16px]">
-                        Manage and view details for all the events you have registered for.
-                    </p>
+                </header>
+
+                {/* Tabbed Navigation */}
+                <div className="my-events-tabs">
+                    <button
+                        className={`my-events-tab ${activeTab === 'Upcoming' ? 'active' : ''}`}
+                        onClick={() => setActiveTab('Upcoming')}
+                    >
+                        Upcoming Events
+                    </button>
+                    <button
+                        className={`my-events-tab ${activeTab === 'Past' ? 'active' : ''}`}
+                        onClick={() => setActiveTab('Past')}
+                    >
+                        Past Events
+                    </button>
                 </div>
 
-                {/* Filters Section */}
-                <div className="bg-white p-5 rounded-2xl border border-gray-100 shadow-sm space-y-5">
-
-                    {/* Top row: Tabs and Search */}
-                    <div className="flex flex-col md:flex-row md:items-center justify-between gap-4">
-                        {/* Tabs */}
-                        <div className="flex items-center p-1 bg-slate-50 rounded-xl overflow-x-auto hide-scroll-bar border border-gray-100">
-                            {tabs.map(tab => (
-                                <button
-                                    key={tab}
-                                    onClick={() => setActiveTab(tab)}
-                                    className={`px-5 py-2 rounded-lg text-[14.5px] font-bold transition-all whitespace-nowrap ${activeTab === tab
-                                        ? 'bg-white text-primary shadow-sm'
-                                        : 'text-gray-500 hover:text-gray-700 hover:bg-white/50'
-                                        }`}
-                                >
-                                    {tab === 'All' ? 'All Events' : tab}
-                                </button>
-                            ))}
-                        </div>
-
-                        {/* Search Input */}
-                        <div className="relative w-full md:w-72">
-                            <Search className="absolute left-3.5 top-1/2 -translate-y-1/2 w-4.5 h-4.5 text-gray-400" />
-                            <input
-                                type="text"
-                                placeholder="Search your events..."
-                                value={searchQuery}
-                                onChange={(e) => setSearchQuery(e.target.value)}
-                                className="w-full pl-10 pr-4 py-2.5 bg-slate-50 border border-gray-200 rounded-xl text-[15px] font-medium text-festra-text-primary placeholder:text-gray-400 focus:outline-none focus:ring-2 focus:ring-primary/20 focus:border-primary/40 transition-all shadow-2xs"
-                            />
-                        </div>
-                    </div>
-
-                    {/* Bottom row: Categories */}
-                    <div className="pt-5 border-t border-gray-100">
-                        <div className="flex flex-wrap gap-2">
-                            {categories.map(category => (
-                                <button
-                                    key={category}
-                                    onClick={() => setActiveCategory(category)}
-                                    className={`px-4 py-1.5 rounded-full text-[13.5px] font-bold transition-all border ${activeCategory === category
-                                        ? 'bg-primary text-white border-primary shadow-sm shadow-primary/20'
-                                        : 'bg-white text-gray-600 border-gray-200 hover:border-primary/30 hover:bg-[#F4F1FF]'
-                                        }`}
-                                >
-                                    {category}
-                                </button>
-                            ))}
-                        </div>
-                    </div>
-                </div>
-
-                {/* Event Cards Grid */}
+                {/* Responsive Grid for Event Cards */}
                 {filteredEvents.length > 0 ? (
-                    <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-6">
+                    <div className="my-events-grid">
                         {filteredEvents.map(event => (
-                            <EventCard key={event.id} event={event} />
+                            <EventCard key={event.id} event={event} isPastEvent={activeTab === 'Past'} />
                         ))}
                     </div>
                 ) : (
-                    <div className="text-center py-16 bg-white border border-gray-100 rounded-2xl">
-                        <p className="text-[17px] font-bold text-gray-400">
-                            No events found matching your criteria.
-                        </p>
+                    <div className="my-events-empty">
+                        <p>No {activeTab.toLowerCase()} events found.</p>
                     </div>
                 )}
             </div>
