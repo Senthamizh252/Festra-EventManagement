@@ -1,62 +1,107 @@
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
-import Logo from '../components/Logo';
-import Button from '../components/Button';
+import './OrganizerDashboard.css';
 
-export default function OrganizerDashboard() {
+const OrganizerDashboard = () => {
     const navigate = useNavigate();
 
+    // Mock Data
+    const stats = {
+        activeEvents: 3,
+        totalRegistrations: 452,
+        overallAttendance: '85%'
+    };
+
+    const recentEvents = [
+        { id: 1, name: 'Tech Symposium 2024', date: '2024-10-15', registrations: 120, status: 'Upcoming' },
+        { id: 2, name: 'AI Workshop', date: '2024-09-20', registrations: 85, status: 'Upcoming' },
+        { id: 3, name: 'Coding Bootcamp', date: '2024-08-10', registrations: 247, status: 'Completed' },
+    ];
+
     return (
-        <div className="min-h-screen bg-festra-bg font-sans p-6 md:p-12 flex flex-col justify-between">
-            <div className="max-w-4xl mx-auto w-full">
-                {/* Header */}
-                <header className="flex justify-between items-center pb-6 border-b border-gray-200 mb-10">
-                    <Logo size="md" />
-                    <Button
-                        variant="outline"
-                        fullWidth={false}
-                        onClick={() => navigate('/login')}
-                    >
-                        Logout
-                    </Button>
-                </header>
-
-                {/* Dashboard Title */}
-                <main className="bg-white rounded-2xl border border-gray-150 p-8 shadow-md">
-                    <div className="flex items-center gap-3 mb-6">
-                        <span className="p-2 bg-primary/10 text-primary rounded-xl font-bold text-[16px]">
-                            ROLE: ORGANIZER
-                        </span>
-                    </div>
-
-                    <h2 className="text-[32px] font-extrabold text-festra-text-primary tracking-tight">
-                        Organizer Dashboard
-                    </h2>
-                    <p className="text-festra-text-secondary mt-3 max-w-2xl leading-relaxed">
-                        Welcome to the Festra Organizer panel. This space is structured for complete event orchestration, including registration control, attendees list, QR code scanners, volunteer delegation, attendee certificate generation, and feedback analysis.
-                    </p>
-
-                    {/* Planned Features List Grid */}
-                    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 mt-8 pt-8 border-t border-gray-100">
-                        {[
-                            { title: 'Event Orchestration', desc: 'Create and modify event details, calendars, and tickets.' },
-                            { title: 'QR Ticketing & Check-in', desc: 'Verify attendees tickets instantly in real-time.' },
-                            { title: 'Volunteer Management', desc: 'Recruit and assign organizers and managers.' },
-                            { title: 'Post-Event Certs', desc: 'Generate and email verification badges.' },
-                            { title: 'Analytics & Feedback', desc: 'Track sign-ups, attendee counts, and surveys.' },
-                        ].map((item, index) => (
-                            <div key={index} className="p-4 rounded-xl border border-gray-100 bg-gray-50/50 hover:bg-gray-50 transition-colors">
-                                <h4 className="font-bold text-festra-text-primary text-[16px]">{item.title}</h4>
-                                <p className="text-[14px] text-festra-text-secondary mt-1">{item.desc}</p>
-                            </div>
-                        ))}
-                    </div>
-                </main>
+        <div className="org-dashboard-page">
+            <div className="org-header">
+                <h1>Welcome back, <span className="highlight-name">Alex Smith</span> (Tech Club)</h1>
+                <p>Your command center for event management</p>
             </div>
 
-            <footer className="text-center text-[14px] text-festra-text-secondary mt-10">
-                &copy; 2026 Festra. All rights reserved.
-            </footer>
+            <section className="org-stats-section">
+                <div className="stat-card">
+                    <div className="stat-icon purple-bg">📅</div>
+                    <div className="stat-details">
+                        <h3>{stats.activeEvents}</h3>
+                        <p>Total Active Events</p>
+                    </div>
+                </div>
+                <div className="stat-card">
+                    <div className="stat-icon pink-bg">👥</div>
+                    <div className="stat-details">
+                        <h3>{stats.totalRegistrations}</h3>
+                        <p>Total Registrations</p>
+                    </div>
+                </div>
+                <div className="stat-card">
+                    <div className="stat-icon gradient-bg">📈</div>
+                    <div className="stat-details">
+                        <h3>{stats.overallAttendance}</h3>
+                        <p>Overall Attendance</p>
+                    </div>
+                </div>
+            </section>
+
+            <section className="org-quick-actions">
+                <h2>Quick Actions</h2>
+                <div className="action-buttons">
+                    <button
+                        className="action-btn primary-btn"
+                        onClick={() => navigate('/organizer/create-event')}
+                    >
+                        <span className="btn-icon">➕</span> Create New Event
+                    </button>
+                    <button className="action-btn secondary-btn">
+                        <span className="btn-icon">📷</span> Scan QR Pass
+                    </button>
+                    <button className="action-btn secondary-btn">
+                        <span className="btn-icon">📝</span> View Registrations
+                    </button>
+                </div>
+            </section>
+
+            <section className="org-recent-events">
+                <h2>Recent Events</h2>
+                <div className="table-responsive">
+                    <table className="events-table">
+                        <thead>
+                            <tr>
+                                <th>Event Name</th>
+                                <th>Date</th>
+                                <th>Registrations</th>
+                                <th>Status</th>
+                                <th>Actions</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {recentEvents.map(event => (
+                                <tr key={event.id}>
+                                    <td className="fw-600">{event.name}</td>
+                                    <td>{new Date(event.date).toLocaleDateString()}</td>
+                                    <td>{event.registrations}</td>
+                                    <td>
+                                        <span className={`status-badge ${event.status.toLowerCase()}`}>
+                                            {event.status}
+                                        </span>
+                                    </td>
+                                    <td>
+                                        <button className="manage-btn">Manage / Edit</button>
+                                    </td>
+                                </tr>
+                            ))}
+                        </tbody>
+                    </table>
+                </div>
+            </section>
         </div>
     );
-}
+};
+
+export default OrganizerDashboard;
