@@ -1,0 +1,260 @@
+.profile-settings-page {
+    padding: 2rem;
+    max-width: 1000px;
+    margin: 0 auto;
+    font-family: inherit;
+    color: #333;
+}
+
+.profile-header h1 {
+    font-size: 2rem;
+    color: #1a1a2e;
+    margin-bottom: 0.5rem;
+}
+
+.profile-header p {
+    color: #666;
+    margin-bottom: 2rem;
+    font-size: 1rem;
+}
+
+.profile-container {
+    display: flex;
+    gap: 2rem;
+    background: white;
+    border-radius: 12px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
+    overflow: hidden;
+    min-height: 500px;
+}
+
+.profile-sidebar {
+    width: 250px;
+    background: #f8f9fa;
+    padding: 2rem 0;
+    border-right: 1px solid #ebebeb;
+}
+
+.tab-btn {
+    width: 100%;
+    text-align: left;
+    padding: 1rem 2rem;
+    background: none;
+    border: none;
+    font-size: 1rem;
+    color: #555;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    font-weight: 500;
+    position: relative;
+}
+
+.tab-btn:hover {
+    background: #f1f1f1;
+    color: #1a1a2e;
+}
+
+.tab-btn.active {
+    background: white;
+    color: #8b3dff;
+    /* Festra signature purple */
+    font-weight: 600;
+}
+
+.tab-btn.active::before {
+    content: "";
+    position: absolute;
+    left: 0;
+    top: 0;
+    height: 100%;
+    width: 4px;
+    background: linear-gradient(135deg, #8b3dff, #ff3d7f);
+    /* Festra gradient */
+}
+
+.profile-content {
+    flex: 1;
+    padding: 2.5rem;
+    position: relative;
+}
+
+.success-banner {
+    background-color: #d4edda;
+    color: #155724;
+    padding: 1rem;
+    border-radius: 6px;
+    margin-bottom: 2rem;
+    font-weight: 500;
+    text-align: center;
+    animation: slideDown 0.3s ease;
+}
+
+.form-section h2 {
+    font-size: 1.25rem;
+    color: #1a1a2e;
+    margin-bottom: 1.5rem;
+    padding-bottom: 0.5rem;
+    border-bottom: 2px solid #f1f1f1;
+}
+
+.input-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1.5rem;
+}
+
+.input-group {
+    margin-bottom: 1.5rem;
+    display: flex;
+    flex-direction: column;
+}
+
+.input-group label {
+    font-size: 0.9rem;
+    font-weight: 600;
+    color: #444;
+    margin-bottom: 0.5rem;
+}
+
+.input-group input {
+    padding: 0.75rem 1rem;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    font-size: 1rem;
+    transition: all 0.2s ease;
+    background: #fdfdfd;
+}
+
+.input-group input:focus {
+    outline: none;
+    border-color: #8b3dff;
+    box-shadow: 0 0 0 3px rgba(139, 61, 255, 0.1);
+    background: white;
+}
+
+.input-group input:disabled {
+    background: #f0f0f0;
+    color: #888;
+    cursor: not-allowed;
+}
+
+.form-actions {
+    margin-top: 2rem;
+    display: flex;
+    justify-content: flex-end;
+}
+
+.save-btn {
+    background: linear-gradient(135deg, #8b3dff, #ff3d7f);
+    /* Festra gradient */
+    color: white;
+    border: none;
+    padding: 0.75rem 2rem;
+    border-radius: 8px;
+    font-size: 1rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: opacity 0.3s ease, transform 0.2s ease;
+    box-shadow: 0 4px 15px rgba(139, 61, 255, 0.3);
+}
+
+.save-btn:hover {
+    opacity: 0.9;
+    transform: translateY(-1px);
+}
+
+.save-btn:active {
+    transform: translateY(1px);
+}
+
+.danger-zone {
+    margin-top: 3rem;
+    padding-top: 1.5rem;
+    border-top: 1px dashed #ffb3b3;
+}
+
+.danger-zone h3 {
+    color: #cc0000;
+    font-size: 1rem;
+    margin-bottom: 1rem;
+}
+
+.danger-btn {
+    background: white;
+    color: #dc3545;
+    border: 1px solid #dc3545;
+    padding: 0.6rem 1.5rem;
+    border-radius: 6px;
+    font-size: 0.9rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.danger-btn:hover {
+    background: #dc3545;
+    color: white;
+}
+
+.fade-in {
+    animation: fadeIn 0.4s ease;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(5px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes slideDown {
+    from {
+        opacity: 0;
+        transform: translateY(-10px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Responsive Styles */
+@media (max-width: 768px) {
+    .profile-container {
+        flex-direction: column;
+    }
+
+    .profile-sidebar {
+        width: 100%;
+        display: flex;
+        padding: 0;
+        border-right: none;
+        border-bottom: 1px solid #ebebeb;
+    }
+
+    .tab-btn {
+        text-align: center;
+        padding: 1rem;
+    }
+
+    .tab-btn.active::before {
+        height: 4px;
+        width: 100%;
+        bottom: 0;
+        top: auto;
+    }
+
+    .input-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .profile-content {
+        padding: 1.5rem;
+    }
+}
