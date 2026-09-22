@@ -12,6 +12,8 @@ export default function Register() {
     const [fullName, setFullName] = useState('');
     const [email, setEmail] = useState('');
     const [phone, setPhone] = useState('');
+    const [registerNumber, setRegisterNumber] = useState('');
+    const [department, setDepartment] = useState('');
     const [password, setPassword] = useState('');
     const [confirmPassword, setConfirmPassword] = useState('');
     const [role, setRole] = useState(''); // Initialized to empty to make "No role selected" validate works
@@ -39,6 +41,14 @@ export default function Register() {
             newErrors.phone = 'Please enter a valid phone number (8-15 digits)';
         }
 
+        if (!registerNumber.trim()) {
+            newErrors.registerNumber = 'Register number is required';
+        }
+
+        if (!department.trim()) {
+            newErrors.department = 'Department is required';
+        }
+
         if (!password) {
             newErrors.password = 'Password is required';
         } else if (password.length < 8) {
@@ -59,23 +69,45 @@ export default function Register() {
         return Object.keys(newErrors).length === 0;
     };
 
-    const handleSubmit = (e) => {
+    const handleSubmit = async (e) => {
         e.preventDefault();
         setSuccessMessage('');
+        setErrors({});
 
         if (!validateForm()) return;
 
         setIsLoading(true);
-        console.log('Initiating registration for client:', { fullName, email, phone, role });
 
-        setTimeout(() => {
+        try {
+            const response = await fetch('http://localhost:5000/api/auth/register', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({
+                    full_name: fullName,
+                    email,
+                    phone,
+                    register_number: registerNumber,
+                    department,
+                    password,
+                    role: role.toLowerCase()
+                })
+            });
+
+            const data = await response.json();
+
+            if (data.success) {
+                setSuccessMessage(data.message + '! Redirecting you to login...');
+                setTimeout(() => {
+                    navigate('/login');
+                }, 2200);
+            } else {
+                setErrors({ submit: data.message });
+            }
+        } catch (error) {
+            setErrors({ submit: 'Server error or network issue' });
+        } finally {
             setIsLoading(false);
-            setSuccessMessage('Account registered successfully! Redirecting you to login...');
-
-            setTimeout(() => {
-                navigate('/login');
-            }, 2200);
-        }, 1500);
+        }
     };
 
     return (
@@ -98,6 +130,14 @@ export default function Register() {
                         <div>
                             <p>{successMessage}</p>
                             <p className="text-[12px] text-emerald-600/90 font-medium mt-1">Directing you to login screen...</p>
+                        </div>
+                    </div>
+                )}
+                {errors.submit && (
+                    <div className="mb-6 p-4 rounded-xl bg-red-50 border border-red-100 text-red-800 text-[14px] font-semibold flex items-start gap-2.5 animate-fade-in-up">
+                        <AlertCircle className="h-4 w-4 text-red-500 flex-shrink-0" />
+                        <div>
+                            <p>{errors.submit}</p>
                         </div>
                     </div>
                 )}
@@ -147,6 +187,36 @@ export default function Register() {
                         }}
                         icon={Phone}
                         error={errors.phone}
+                        required
+                    />
+
+                    <Input
+                        id="registerNumber"
+                        type="text"
+                        label="Register Number"
+                        placeholder="Enter your register number (e.g. 22CS001)"
+                        value={registerNumber}
+                        onChange={(e) => {
+                            setRegisterNumber(e.target.value);
+                            if (errors.registerNumber) setErrors({ ...errors, registerNumber: null });
+                        }}
+                        icon={User}
+                        error={errors.registerNumber}
+                        required
+                    />
+
+                    <Input
+                        id="department"
+                        type="text"
+                        label="Department"
+                        placeholder="Enter your department (e.g. CSE)"
+                        value={department}
+                        onChange={(e) => {
+                            setDepartment(e.target.value);
+                            if (errors.department) setErrors({ ...errors, department: null });
+                        }}
+                        icon={User}
+                        error={errors.department}
                         required
                     />
 

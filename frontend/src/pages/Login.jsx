@@ -11,6 +11,7 @@ export default function Login() {
     const navigate = useNavigate();
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
+    const [role, setRole] = useState('participant');
     const [rememberMe, setRememberMe] = useState(false);
     const [errors, setErrors] = useState({});
     const [isLoading, setIsLoading] = useState(false);
@@ -36,7 +37,7 @@ export default function Login() {
         return Object.keys(newErrors).length === 0;
     };
 
-    const handleSubmit = (e) => {
+    const handleSubmit = async (e) => {
         e.preventDefault();
         setSuccessMessage('');
         setErrorMessage('');
@@ -44,22 +45,37 @@ export default function Login() {
         if (!validateForm()) return;
 
         setIsLoading(true);
-        console.log('Initiating authentication for client:', { email, rememberMe });
 
-        // Simulate API latency
-        setTimeout(() => {
+        try {
+            const response = await fetch('http://localhost:5000/api/auth/login', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({ email, password })
+            });
+
+            const data = await response.json();
+
+            if (data.success) {
+                localStorage.setItem('token', data.token);
+                localStorage.setItem('user', JSON.stringify(data.user));
+
+                setSuccessMessage('Login successful! Redirecting you to dashboard preview...');
+
+                setTimeout(() => {
+                    if (data.user.role === 'organizer') {
+                        navigate('/organizer/dashboard');
+                    } else {
+                        navigate('/participant-dashboard');
+                    }
+                }, 1800);
+            } else {
+                setErrorMessage(data.message);
+            }
+        } catch (error) {
+            setErrorMessage('Server error or network issue');
+        } finally {
             setIsLoading(false);
-            setSuccessMessage('Form validated successfully! POST /api/auth/login integration is pending backend development.');
-
-            setTimeout(() => {
-                // If email contains 'organizer' let's redirect to organizer dashboard, else participant for testing convenience
-                if (email.toLowerCase().includes('organizer')) {
-                    navigate('/organizer/dashboard');
-                } else {
-                    navigate('/participant-dashboard');
-                }
-            }, 1800);
-        }, 1500);
+        }
     };
 
     const handleGoogleLogin = () => {
@@ -97,6 +113,24 @@ export default function Login() {
                         <span>{errorMessage}</span>
                     </div>
                 )}
+
+                {/* ROLE TOGGLE */}
+                <div className="role-toggle-container">
+                    <button
+                        type="button"
+                        className={`role-toggle-btn ${role === 'participant' ? 'active' : ''}`}
+                        onClick={() => setRole('participant')}
+                    >
+                        Participant
+                    </button>
+                    <button
+                        type="button"
+                        className={`role-toggle-btn ${role === 'organizer' ? 'active' : ''}`}
+                        onClick={() => setRole('organizer')}
+                    >
+                        Organizer
+                    </button>
+                </div>
 
                 {/* INPUTS FORM */}
                 <form onSubmit={handleSubmit} className="space-y-4.5" noValidate>

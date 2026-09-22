@@ -1,6 +1,7 @@
 import express from 'express';
 import cors from 'cors';
 import dotenv from 'dotenv';
+import authRoutes from './routes/authRoutes.js';
 
 // Load Environment variables
 dotenv.config();
@@ -22,18 +23,8 @@ app.get('/', (req, res) => {
     });
 });
 
-// Authentication endpoints (Planned for implementation in later phases)
-app.post('/api/auth/login', (req, res) => {
-    res.status(501).json({
-        message: 'Backend server is in Phase 1 (UI/UX Foundation). The login API integration is pending implementation.'
-    });
-});
-
-app.post('/api/auth/register', (req, res) => {
-    res.status(501).json({
-        message: 'Backend server is in Phase 1 (UI/UX Foundation). The register API integration is pending implementation.'
-    });
-});
+// Authentication Routes
+app.use('/api/auth', authRoutes);
 
 // Startup Listener
 app.listen(PORT, () => {
