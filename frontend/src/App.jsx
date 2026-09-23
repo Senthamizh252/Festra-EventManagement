@@ -9,6 +9,8 @@ import MyEvents from './pages/MyEvents';
 import EventDetails from './pages/EventDetails';
 import EventRegistration from './pages/EventRegistration';
 import MyQRPass from './pages/MyQRPass';
+import ManageEvents from './pages/ManageEvents';
+import QRScanner from './pages/QRScanner';
 import './App.css';
 
 export default function App() {
@@ -23,8 +25,11 @@ export default function App() {
         <Route path="/register" element={<Register />} />
         <Route path="/forgot-password" element={<ForgotPassword />} />
 
-        {/* Dashboards */}
+        {/* Dashboards and Organizer */}
+        <Route path="/organizer" element={<Navigate to="/organizer/dashboard" replace />} />
         <Route path="/organizer/dashboard" element={<OrganizerDashboard />} />
+        <Route path="/organizer/manage-events" element={<ManageEvents />} />
+        <Route path="/organizer/scan" element={<QRScanner />} />
 
         {/* Participant Routes */}
         <Route path="/participant-dashboard" element={<ParticipantDashboard />} />
