@@ -1,0 +1,241 @@
+.la-container {
+    background-color: white;
+    border-radius: 12px;
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05), 0 2px 4px -2px rgba(0, 0, 0, 0.05);
+    overflow: hidden;
+    font-family: inherit;
+    border: 1px solid #f3f4f6;
+    max-width: 800px;
+    width: 100%;
+    margin: 0 auto;
+}
+
+.la-header {
+    padding: 1.25rem 1.5rem;
+    border-bottom: 1px solid #f3f4f6;
+    background-color: #fff;
+}
+
+.la-header-top {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 1rem;
+}
+
+.la-title {
+    font-size: 1.15rem;
+    font-weight: 700;
+    color: #111827;
+    margin: 0;
+}
+
+.la-live-badge {
+    display: inline-flex;
+    align-items: center;
+    background-color: #fef2f2;
+    color: #ef4444;
+    /* Festra Alert Red */
+    padding: 0.35rem 0.6rem;
+    border-radius: 9999px;
+    font-size: 0.75rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    gap: 0.4rem;
+}
+
+.la-live-dot {
+    width: 6px;
+    height: 6px;
+    background-color: #ef4444;
+    border-radius: 50%;
+    animation: la-pulse-red 1.5s infinite;
+}
+
+@keyframes la-pulse-red {
+    0% {
+        box-shadow: 0 0 0 0 rgba(239, 68, 68, 0.5);
+    }
+
+    70% {
+        box-shadow: 0 0 0 6px rgba(239, 68, 68, 0);
+    }
+
+    100% {
+        box-shadow: 0 0 0 0 rgba(239, 68, 68, 0);
+    }
+}
+
+.la-filters {
+    display: flex;
+    gap: 0.5rem;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: none;
+    /* Firefox */
+}
+
+.la-filters::-webkit-scrollbar {
+    display: none;
+    /* Safari and Chrome */
+}
+
+.la-filter-btn {
+    background-color: #f9fafb;
+    border: 1px solid #e5e7eb;
+    padding: 0.4rem 1rem;
+    border-radius: 9999px;
+    font-size: 0.85rem;
+    color: #4b5563;
+    font-weight: 600;
+    cursor: pointer;
+    white-space: nowrap;
+    transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.la-filter-btn:hover {
+    background-color: #f3f4f6;
+}
+
+.la-filter-btn.active {
+    background-color: #8b3dff;
+    /* Festra Core Gradient Primary Component */
+    color: white;
+    border-color: #8b3dff;
+    box-shadow: 0 2px 4px rgba(139, 61, 255, 0.2);
+}
+
+.la-feed {
+    display: flex;
+    flex-direction: column;
+}
+
+.la-item {
+    padding: 1.5rem;
+    border-bottom: 1px solid #f3f4f6;
+    position: relative;
+    transition: background-color 0.2s ease;
+}
+
+.la-item:last-child {
+    border-bottom: none;
+}
+
+.la-item:hover {
+    background-color: #f9fafb;
+    /* Smooth scan highlight */
+}
+
+/* High Priority / Pinned Item Accent Border */
+.la-item.pinned::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    width: 4px;
+    background: linear-gradient(to bottom, #ef4444, #f87171);
+}
+
+.la-item-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 0.75rem;
+}
+
+.la-tag {
+    display: inline-block;
+    padding: 0.25rem 0.6rem;
+    border-radius: 0.35rem;
+    font-size: 0.75rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.02em;
+}
+
+/* Specific Badge Theme Colors */
+.la-tag.urgent {
+    background-color: #fef2f2;
+    color: #b91c1c;
+}
+
+/* Soft Red */
+.la-tag.schedule {
+    background-color: #eff6ff;
+    color: #1d4ed8;
+}
+
+/* Soft Blue */
+.la-tag.general {
+    background-color: #f5f3ff;
+    color: #6d28d9;
+}
+
+/* Soft Purple */
+
+.la-timestamp {
+    font-size: 0.8rem;
+    color: #6b7280;
+    font-weight: 500;
+}
+
+.la-item-title {
+    font-size: 1.05rem;
+    font-weight: 700;
+    color: #1f2937;
+    margin: 0 0 0.5rem 0;
+    line-height: 1.4;
+}
+
+.la-item-desc {
+    font-size: 0.95rem;
+    color: #4b5563;
+    margin: 0 0 1rem 0;
+    line-height: 1.6;
+    /* Scannable High readability height */
+}
+
+.la-item-footer {
+    display: flex;
+    align-items: center;
+    gap: 0.4rem;
+    font-size: 0.85rem;
+    color: #9ca3af;
+    font-weight: 500;
+}
+
+.la-item-footer svg {
+    color: #d1d5db;
+}
+
+/* Empty State */
+.la-empty {
+    padding: 4rem 2rem;
+    text-align: center;
+    color: #6b7280;
+    background-color: #fafafa;
+}
+
+.la-empty-icon {
+    margin-bottom: 1.25rem;
+    color: #d1d5db;
+    display: flex;
+    justify-content: center;
+}
+
+.la-empty p {
+    font-size: 1rem;
+    margin: 0;
+    font-weight: 500;
+}
+
+/* Mobile Tweak */
+@media (max-width: 640px) {
+    .la-header-top {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 0.75rem;
+    }
+}
