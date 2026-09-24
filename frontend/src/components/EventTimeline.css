@@ -1,0 +1,335 @@
+.timeline-container {
+    max-width: 800px;
+    margin: 0 auto;
+    font-family: inherit;
+    width: 100%;
+}
+
+.timeline-tabs {
+    display: flex;
+    gap: 1.5rem;
+    margin-bottom: 2rem;
+    border-bottom: 1px solid #e5e7eb;
+    padding-bottom: 0;
+}
+
+.timeline-tab {
+    padding: 0.75rem 0.5rem;
+    cursor: pointer;
+    font-weight: 600;
+    font-size: 1rem;
+    color: #6b7280;
+    background: none;
+    border: none;
+    position: relative;
+    transition: color 0.3s ease;
+}
+
+.timeline-tab:hover {
+    color: #374151;
+}
+
+.timeline-tab.active {
+    color: #8b3dff;
+    /* Festra primary */
+}
+
+.timeline-tab.active::after {
+    content: '';
+    position: absolute;
+    bottom: -1px;
+    left: 0;
+    width: 100%;
+    height: 3px;
+    background: linear-gradient(135deg, #8b3dff, #ff3d7f);
+    border-radius: 3px 3px 0 0;
+}
+
+.timeline-list {
+    display: flex;
+    flex-direction: column;
+    position: relative;
+}
+
+/* Timeline central vertical line */
+.timeline-list::before {
+    content: '';
+    position: absolute;
+    top: 1rem;
+    bottom: 0;
+    left: 140px;
+    /* Offset for time column */
+    width: 2px;
+    background-color: #e5e7eb;
+}
+
+.timeline-item {
+    display: flex;
+    margin-bottom: 2.5rem;
+    position: relative;
+    align-items: flex-start;
+}
+
+.timeline-item:last-child {
+    margin-bottom: 0;
+}
+
+.timeline-time {
+    width: 120px;
+    flex-shrink: 0;
+    padding-right: 1.5rem;
+    text-align: right;
+    padding-top: 0.5rem;
+}
+
+.time-start {
+    display: block;
+    font-weight: 700;
+    color: #1f2937;
+    font-size: 1rem;
+}
+
+.time-end {
+    display: block;
+    font-size: 0.85rem;
+    color: #6b7280;
+    margin-top: 0.25rem;
+}
+
+.timeline-node {
+    width: 40px;
+    display: flex;
+    justify-content: center;
+    position: absolute;
+    left: 120px;
+    flex-shrink: 0;
+    padding-top: 0.65rem;
+    z-index: 10;
+}
+
+.timeline-dot {
+    width: 18px;
+    height: 18px;
+    border-radius: 50%;
+    background-color: white;
+    border: 3px solid #d1d5db;
+    transition: border-color 0.3s;
+}
+
+/* Active Live Now Pulse */
+.timeline-dot.is-live {
+    border: none;
+    background: linear-gradient(135deg, #8b3dff, #ff3d7f);
+    box-shadow: 0 0 0 0 rgba(139, 61, 255, 0.4);
+    animation: pulse-live 1.5s infinite;
+}
+
+@keyframes pulse-live {
+    0% {
+        box-shadow: 0 0 0 0 rgba(139, 61, 255, 0.5);
+    }
+
+    70% {
+        box-shadow: 0 0 0 12px rgba(139, 61, 255, 0);
+    }
+
+    100% {
+        box-shadow: 0 0 0 0 rgba(139, 61, 255, 0);
+    }
+}
+
+.timeline-content {
+    flex-grow: 1;
+    padding-left: 3rem;
+    /* 120 + 40 width from left side elements handling */
+}
+
+.timeline-card {
+    background: white;
+    border: 1px solid #f3f4f6;
+    border-radius: 1rem;
+    padding: 1.5rem;
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05), 0 2px 4px -2px rgba(0, 0, 0, 0.05);
+    transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+    position: relative;
+    overflow: hidden;
+}
+
+.timeline-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 12px 20px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -4px rgba(0, 0, 0, 0.05);
+    border-color: #e5e7eb;
+}
+
+/* Active card accent border on the left side */
+.timeline-card.is-live::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 5px;
+    background: linear-gradient(to bottom, #8b3dff, #ff3d7f);
+}
+
+.timeline-card-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    margin-bottom: 1rem;
+    gap: 1rem;
+}
+
+.timeline-title {
+    font-size: 1.15rem;
+    font-weight: 700;
+    color: #111827;
+    margin: 0;
+    line-height: 1.4;
+}
+
+.live-badge {
+    display: inline-flex;
+    align-items: center;
+    background: #fdf2f8;
+    color: #db2777;
+    /* Festra highlight pink */
+    font-size: 0.75rem;
+    font-weight: 700;
+    padding: 0.35rem 0.6rem;
+    border-radius: 9999px;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    flex-shrink: 0;
+}
+
+.live-badge::before {
+    content: '';
+    display: inline-block;
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background-color: #db2777;
+    margin-right: 0.4rem;
+}
+
+.timeline-meta {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1.25rem;
+    margin-bottom: 1rem;
+    font-size: 0.875rem;
+    color: #4b5563;
+}
+
+.meta-item {
+    display: flex;
+    align-items: center;
+    gap: 0.4rem;
+}
+
+.meta-item svg {
+    color: #8b3dff;
+    /* Festra Icon Purple */
+}
+
+.track-tag {
+    display: inline-block;
+    padding: 0.25rem 0.75rem;
+    border-radius: 9999px;
+    font-size: 0.75rem;
+    font-weight: 600;
+    background-color: #f3f4f6;
+    color: #374151;
+    margin-bottom: 0.75rem;
+    border: 1px solid transparent;
+}
+
+/* Specific Track Types mapping */
+.track-tag.keynote {
+    background-color: #eff6ff;
+    color: #2563eb;
+    border-color: #bfdbfe;
+}
+
+.track-tag.workshop {
+    background-color: #f0fdf4;
+    color: #16a34a;
+    border-color: #bbf7d0;
+}
+
+.track-tag.break {
+    background-color: #fefce8;
+    color: #ca8a04;
+    border-color: #fef08a;
+}
+
+.track-tag.panel {
+    background-color: #f5f3ff;
+    color: #7c3aed;
+    border-color: #ddd6fe;
+}
+
+.timeline-desc {
+    font-size: 0.95rem;
+    color: #6b7280;
+    margin: 0;
+    line-height: 1.5;
+}
+
+/* Mobile Responsive State */
+@media (max-width: 640px) {
+    .timeline-list::before {
+        left: 18px;
+        /* Stick to far left side on mobile */
+    }
+
+    .timeline-item {
+        flex-direction: column;
+    }
+
+    .timeline-time {
+        width: 100%;
+        text-align: left;
+        padding-right: 0;
+        padding-left: 50px;
+        padding-top: 0;
+        margin-bottom: 0.75rem;
+        display: flex;
+        align-items: center;
+        gap: 0.5rem;
+    }
+
+    .time-end {
+        margin-top: 0;
+    }
+
+    .time-end::before {
+        content: '- ';
+    }
+
+    .timeline-node {
+        left: -2px;
+        /* Line up directly with pseudo element line (width 40 / 2 = 20, center is 18px) */
+        top: 0;
+        padding-top: 2px;
+    }
+
+    .timeline-content {
+        padding-left: 45px;
+        width: 100%;
+        box-sizing: border-box;
+    }
+
+    .timeline-tabs {
+        overflow-x: auto;
+        white-space: nowrap;
+        -webkit-overflow-scrolling: touch;
+        scrollbar-width: none;
+        /* Hide scrollbar for cleaner look */
+    }
+
+    .timeline-tabs::-webkit-scrollbar {
+        display: none;
+    }
+}
