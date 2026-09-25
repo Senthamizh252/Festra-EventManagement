@@ -1,0 +1,279 @@
+/* Container for actions and the badge */
+.event-badge-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 24px;
+  padding: 32px;
+  font-family: 'Inter', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+/* Action Buttons */
+.badge-actions {
+  display: flex;
+  gap: 12px;
+}
+
+.badge-actions button {
+  padding: 10px 20px;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  font-size: 14px;
+  font-weight: 600;
+  transition: all 0.2s ease;
+}
+
+.btn-print {
+  background-color: #a855f7;
+  color: white;
+  box-shadow: 0 4px 6px rgba(168, 85, 247, 0.2);
+}
+
+.btn-print:hover {
+  background-color: #9333ea;
+  box-shadow: 0 6px 12px rgba(168, 85, 247, 0.3);
+}
+
+.btn-download {
+  background-color: #ffffff;
+  color: #374151;
+  border: 1px solid #d1d5db;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.05);
+}
+
+.btn-download:hover {
+  background-color: #f9fafb;
+}
+
+/* Badge Card Styles */
+.badge-card {
+  width: 320px;
+  border-radius: 16px;
+  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.12);
+  display: flex;
+  flex-direction: column;
+  
+  /* Festra purple/pink accent gradient border effect */
+  border: 3px solid transparent;
+  background: linear-gradient(#ffffff, #ffffff) padding-box,
+              linear-gradient(135deg, #a855f7, #ec4899) border-box;
+}
+
+.badge-header {
+  background: linear-gradient(135deg, #a855f7, #ec4899);
+  color: white;
+  text-align: center;
+  padding: 24px 16px;
+  border-radius: 12px 12px 0 0;
+  -webkit-print-color-adjust: exact;
+  print-color-adjust: exact;
+}
+
+.badge-logo {
+  margin: 0;
+  font-size: 26px;
+  font-weight: 900;
+  letter-spacing: 3px;
+}
+
+.badge-subtitle {
+  margin: 6px 0 0;
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 1.5px;
+  opacity: 0.9;
+}
+
+.badge-body {
+  padding: 32px 20px 24px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background-color: #ffffff;
+}
+
+.badge-avatar-section {
+  margin-bottom: 20px;
+  margin-top: -60px; /* Overlaps with the header */
+}
+
+.badge-avatar {
+  width: 96px;
+  height: 96px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 4px solid #ffffff;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  background-color: #ffffff;
+}
+
+.badge-avatar-placeholder {
+  width: 96px;
+  height: 96px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, #f3e8ff, #fce7f3);
+  color: #a855f7;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 36px;
+  font-weight: 700;
+  border: 4px solid #ffffff;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  -webkit-print-color-adjust: exact;
+  print-color-adjust: exact;
+}
+
+.badge-user-info {
+  text-align: center;
+  margin-bottom: 24px;
+  width: 100%;
+}
+
+.badge-name {
+  margin: 0 0 6px;
+  font-size: 24px;
+  color: #111827;
+  font-weight: 800;
+  line-height: 1.2;
+}
+
+.badge-department {
+  margin: 0 0 4px;
+  font-size: 15px;
+  color: #4b5563;
+  font-weight: 500;
+}
+
+.badge-reg-number {
+  margin: 0;
+  font-size: 12px;
+  color: #9ca3af;
+  font-family: 'Courier New', Courier, monospace;
+}
+
+.badge-access-tier {
+  padding: 8px 20px;
+  border-radius: 24px;
+  font-size: 13px;
+  font-weight: 800;
+  letter-spacing: 1.5px;
+  margin-bottom: 28px;
+  text-transform: uppercase;
+  -webkit-print-color-adjust: exact;
+  print-color-adjust: exact;
+}
+
+.tier-all-access {
+  background-color: #fef08a;
+  color: #854d0e;
+}
+
+.tier-vip {
+  background-color: #1f2937;
+  color: #f9fafb;
+}
+
+.tier-general-delegate {
+  background-color: #e0e7ff;
+  color: #3730a3;
+}
+
+.badge-qr-placeholder {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+
+.qr-box {
+  width: 140px;
+  height: 140px;
+  border: 2px dashed #d1d5db;
+  border-radius: 12px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  background-color: #f9fafb;
+}
+
+.qr-text {
+  font-size: 12px;
+  font-weight: 700;
+  color: #6b7280;
+  margin-bottom: 6px;
+}
+
+.qr-id {
+  font-size: 10px;
+  color: #9ca3af;
+  font-family: 'Courier New', Courier, monospace;
+}
+
+.badge-footer {
+  background-color: #f9fafb;
+  padding: 20px;
+  text-align: center;
+  border-top: 1px solid #f3f4f6;
+  border-radius: 0 0 12px 12px;
+  -webkit-print-color-adjust: exact;
+  print-color-adjust: exact;
+}
+
+.badge-event-title {
+  margin: 0 0 6px;
+  font-size: 15px;
+  font-weight: 800;
+  color: #1f2937;
+}
+
+.badge-event-date,
+.badge-venue {
+  margin: 0 0 4px;
+  font-size: 12px;
+  color: #6b7280;
+  font-weight: 500;
+}
+
+/* Print Media Query */
+@media print {
+  @page {
+    margin: 0;
+    size: auto;
+  }
+  
+  body * {
+    visibility: hidden;
+  }
+  
+  .event-badge-container {
+    position: absolute;
+    left: 0;
+    top: 0;
+    padding: 0;
+    margin: 0;
+    width: 100%;
+    align-items: flex-start;
+  }
+
+  /* Make badge visible and reset position */
+  .badge-card,
+  .badge-card * {
+    visibility: visible;
+  }
+
+  .no-print {
+    display: none !important;
+  }
+
+  /* Optimize layout for print */
+  .badge-card {
+    box-shadow: none;
+    margin: 20mm; /* Add some physical print margin */
+    break-inside: avoid;
+    page-break-inside: avoid;
+    -webkit-print-color-adjust: exact;
+    print-color-adjust: exact;
+  }
+}

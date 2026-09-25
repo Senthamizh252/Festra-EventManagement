@@ -335,8 +335,11 @@
     font-size: 1.5rem;
     font-weight: 700;
     color: var(--festra-text);
-    background: linear-gradient(135deg, var(--festra-purple-dark), #9333ea);
+    background: linear-gradient(135deg, var(--festra-purple-dark), var(--festra-purple));
+
     -webkit-background-clip: text;
+    background-clip: text;
+
     -webkit-text-fill-color: transparent;
 }
 
