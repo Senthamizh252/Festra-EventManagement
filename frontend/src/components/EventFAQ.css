@@ -1,0 +1,310 @@
+/* EventFAQ.css */
+:root {
+    --festra-purple: #818cf8;
+    --festra-purple-dark: #6366f1;
+    --festra-purple-light: #e0e7ff;
+    --festra-text-main: #1f2937;
+    --festra-text-muted: #6b7280;
+    --festra-bg-light: #f9fafb;
+    --festra-border: #e5e7eb;
+}
+
+.event-faq-container {
+    display: grid;
+    grid-template-columns: 1fr 380px;
+    gap: 2rem;
+    max-width: 1200px;
+    margin: 0 auto;
+    font-family: 'Inter', system-ui, -apple-system, sans-serif;
+    padding: 1.5rem;
+}
+
+/* --- FAQ Section --- */
+.faq-section {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+}
+
+.faq-header h2 {
+    font-size: 1.75rem;
+    font-weight: 700;
+    color: var(--festra-text-main);
+    margin: 0 0 0.5rem 0;
+}
+
+.faq-header p {
+    font-size: 1rem;
+    color: var(--festra-text-muted);
+    margin: 0;
+}
+
+.faq-accordion {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+.accordion-item {
+    background: white;
+    border-radius: 14px;
+    border: 1px solid var(--festra-border);
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.02);
+    overflow: hidden;
+    transition: all 0.3s ease;
+    cursor: pointer;
+}
+
+.accordion-item:hover {
+    border-color: #c7d2fe;
+    box-shadow: 0 4px 12px rgba(99, 102, 241, 0.08);
+}
+
+.accordion-item.active {
+    border: 1px solid transparent;
+    background-origin: border-box;
+    background-clip: padding-box, border-box;
+    background-image: linear-gradient(white, white), linear-gradient(135deg, var(--festra-purple), #d946ef);
+    box-shadow: 0 4px 14px rgba(99, 102, 241, 0.12);
+}
+
+.accordion-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1.25rem 1.5rem;
+}
+
+.accordion-header h3 {
+    margin: 0;
+    font-size: 1.05rem;
+    font-weight: 600;
+    color: var(--festra-text-main);
+    line-height: 1.4;
+    padding-right: 1.5rem;
+}
+
+.chevron-icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--festra-purple-dark);
+    transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    min-width: 24px;
+}
+
+.chevron-icon.open {
+    transform: rotate(180deg);
+}
+
+/* Accordion Content Wrapper animations */
+.accordion-content-inner {
+    padding: 0 1.5rem 1.25rem 1.5rem;
+    opacity: 0;
+    transform: translateY(-5px);
+    transition: opacity 0.3s cubic-bezier(0.4, 0, 0.2, 1), transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.accordion-item.active .accordion-content-inner {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.accordion-content-inner p {
+    margin: 0;
+    color: var(--festra-text-muted);
+    line-height: 1.6;
+    font-size: 0.95rem;
+}
+
+/* --- Contact Section --- */
+.contact-section {
+    position: relative;
+}
+
+.sticky-contact-card {
+    position: sticky;
+    top: 2rem;
+    background: white;
+    border-radius: 14px;
+    padding: 1.75rem;
+    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.06);
+    border: 1px solid var(--festra-border);
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+}
+
+.contact-card-header {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+}
+
+.club-badge {
+    align-self: flex-start;
+    background: var(--festra-purple-light);
+    color: var(--festra-purple-dark);
+    font-size: 0.75rem;
+    font-weight: 700;
+    padding: 0.35rem 0.75rem;
+    border-radius: 99px;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.contact-card-header h3 {
+    margin: 0;
+    font-size: 1.25rem;
+    font-weight: 700;
+    color: var(--festra-text-main);
+}
+
+.coordinator-info {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    padding-bottom: 1.25rem;
+    border-bottom: 1px solid var(--festra-border);
+}
+
+.avatar-placeholder {
+    width: 48px;
+    height: 48px;
+    border-radius: 50%;
+    background: linear-gradient(135deg, var(--festra-purple-dark), #d946ef);
+    color: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.25rem;
+    font-weight: 700;
+    box-shadow: 0 4px 10px rgba(99, 102, 241, 0.3);
+}
+
+.coordinator-details h4 {
+    margin: 0 0 0.25rem 0;
+    font-size: 1.05rem;
+    font-weight: 600;
+    color: var(--festra-text-main);
+}
+
+.coordinator-details p {
+    margin: 0;
+    font-size: 0.85rem;
+    color: var(--festra-text-muted);
+}
+
+.contact-links {
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+}
+
+.contact-link-item {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    color: var(--festra-text-main);
+    text-decoration: none;
+    font-size: 0.95rem;
+    padding: 0.75rem;
+    border-radius: 8px;
+    transition: all 0.2s ease;
+    background: var(--festra-bg-light);
+    border: 1px solid transparent;
+}
+
+.contact-link-item:hover {
+    background: white;
+    border-color: #c7d2fe;
+    color: var(--festra-purple-dark);
+    box-shadow: 0 2px 8px rgba(99, 102, 241, 0.08);
+}
+
+.contact-link-item .icon {
+    color: var(--festra-text-muted);
+    display: flex;
+    transition: color 0.2s ease;
+}
+
+.contact-link-item:hover .icon {
+    color: var(--festra-purple-dark);
+}
+
+.hours-badge {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-size: 0.85rem;
+    color: #047857;
+    background: #d1fae5;
+    padding: 0.5rem 0.75rem;
+    border-radius: 8px;
+    font-weight: 500;
+}
+
+.hours-badge svg {
+    color: #059669;
+}
+
+.send-inquiry-btn {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    padding: 0.875rem 1.5rem;
+    background: linear-gradient(135deg, var(--festra-purple-dark), #9333ea);
+    color: white;
+    border: none;
+    border-radius: 8px;
+    font-size: 0.95rem;
+    font-weight: 600;
+    cursor: pointer;
+    text-decoration: none;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 12px rgba(99, 102, 241, 0.25);
+    margin-top: 0.5rem;
+}
+
+.send-inquiry-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 16px rgba(99, 102, 241, 0.4);
+}
+
+.send-inquiry-btn:active {
+    transform: translateY(0);
+}
+
+/* --- Responsive Layout --- */
+@media screen and (max-width: 900px) {
+    .event-faq-container {
+        grid-template-columns: 1fr;
+    }
+
+    .sticky-contact-card {
+        position: static;
+    }
+}
+
+@media screen and (max-width: 480px) {
+    .event-faq-container {
+        padding: 1rem;
+    }
+
+    .faq-header h2 {
+        font-size: 1.5rem;
+    }
+
+    .accordion-header {
+        padding: 1rem 1.25rem;
+    }
+
+    .accordion-content-inner {
+        padding: 0 1.25rem 1rem 1.25rem;
+    }
+
+    .contact-card-header h3 {
+        font-size: 1.15rem;
+    }
+}
