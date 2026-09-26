@@ -1,0 +1,374 @@
+.vtb-container {
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+  max-width: 1200px;
+  margin: 0 auto;
+  color: #1f2937;
+  padding: 24px;
+}
+
+/* Header & Quick Roster Metrics */
+.vtb-header-section {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  flex-wrap: wrap;
+  gap: 24px;
+  margin-bottom: 32px;
+}
+
+.vtb-header-text h2 {
+  margin: 0 0 8px 0;
+  font-size: 1.75rem;
+  font-weight: 700;
+  color: #111827;
+}
+
+.vtb-header-text p {
+  margin: 0;
+  color: #6b7280;
+  font-size: 1rem;
+}
+
+.vtb-metrics-row {
+  display: flex;
+  gap: 16px;
+  flex-wrap: wrap;
+}
+
+.vtb-metric-card {
+  background-color: #ffffff;
+  border: 1px solid #e5e7eb;
+  border-radius: 12px;
+  padding: 16px 20px;
+  min-width: 140px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.02);
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.vtb-metric-value {
+  font-size: 1.75rem;
+  font-weight: 700;
+  color: #1f2937;
+  line-height: 1;
+}
+
+.vtb-metric-label {
+  font-size: 0.8rem;
+  color: #6b7280;
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.vtb-assign-btn {
+  background: linear-gradient(135deg, #8b5cf6, #ec4899);
+  color: #ffffff;
+  border: none;
+  padding: 12px 24px;
+  border-radius: 10px;
+  font-weight: 600;
+  font-size: 1rem;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  transition: opacity 0.2s ease, transform 0.2s ease, box-shadow 0.2s ease;
+  box-shadow: 0 4px 12px rgba(236, 72, 153, 0.25);
+  white-space: nowrap;
+}
+
+.vtb-assign-btn:hover {
+  opacity: 0.95;
+  transform: translateY(-2px);
+  box-shadow: 0 6px 16px rgba(236, 72, 153, 0.35);
+}
+
+/* Kanban Board Layout */
+.vtb-kanban-board {
+  display: flex;
+  gap: 24px;
+  align-items: flex-start;
+}
+
+.vtb-lane {
+  flex: 1;
+  background-color: #f9fafb;
+  border-radius: 14px;
+  min-width: 300px;
+  display: flex;
+  flex-direction: column;
+  border: 1px solid #f3f4f6;
+  box-shadow: 0 4px 20px rgba(0,0,0,0.02);
+  overflow: hidden;
+}
+
+/* Lane Accent Headers */
+.vtb-lane-header {
+  padding: 16px 20px;
+  font-weight: 600;
+  font-size: 1.05rem;
+  background-color: #ffffff;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: 1px solid #e5e7eb;
+}
+
+.vtb-lane-todo { border-top: 4px solid #9ca3af; }
+.vtb-lane-inprogress { border-top: 4px solid #f59e0b; }
+.vtb-lane-completed { border-top: 4px solid #10b981; }
+
+.vtb-lane-count {
+  background-color: #f3f4f6;
+  padding: 2px 10px;
+  border-radius: 9999px;
+  font-size: 0.85rem;
+  color: #4b5563;
+}
+
+/* Task Cards */
+.vtb-card-list {
+  padding: 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  min-height: 150px;
+}
+
+.vtb-task-card {
+  background-color: #ffffff;
+  border: 1px solid #e5e7eb;
+  border-radius: 12px;
+  padding: 16px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.03);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  position: relative;
+}
+
+.vtb-task-card:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 16px rgba(0,0,0,0.06);
+  border-color: #d1d5db;
+}
+
+.vtb-card-top {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  margin-bottom: 12px;
+}
+
+.vtb-department-tag {
+  background-color: #f3f4f6;
+  color: #374151;
+  font-size: 0.75rem;
+  padding: 4px 8px;
+  border-radius: 6px;
+  font-weight: 500;
+}
+
+.vtb-priority {
+  font-size: 0.7rem;
+  font-weight: 700;
+  padding: 3px 8px;
+  border-radius: 9999px;
+  text-transform: uppercase;
+}
+.vtb-priority-high { background-color: #fee2e2; color: #b91c1c; }
+.vtb-priority-medium { background-color: #fef3c7; color: #d97706; }
+.vtb-priority-low { background-color: #e0f2fe; color: #0369a1; }
+
+.vtb-task-title {
+  margin: 0 0 16px 0;
+  font-size: 1rem;
+  font-weight: 600;
+  color: #111827;
+  line-height: 1.4;
+}
+
+/* Assignee & Footer */
+.vtb-card-footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-top: 1px solid #f3f4f6;
+  padding-top: 12px;
+  flex-wrap: wrap;
+  gap: 12px;
+}
+
+.vtb-assignee-info {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.vtb-avatar {
+  width: 28px;
+  height: 28px;
+  background: linear-gradient(135deg, #e5e7eb, #d1d5db);
+  color: #4b5563;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.75rem;
+  font-weight: 700;
+}
+
+.vtb-avatar.active-avatar {
+  background: linear-gradient(135deg, #a78bfa, #f472b6);
+  color: #ffffff;
+}
+
+.vtb-assignee-details {
+  display: flex;
+  flex-direction: column;
+}
+
+.vtb-assignee-name {
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: #374151;
+}
+
+.vtb-assignee-phone {
+  font-size: 0.75rem;
+  color: #8b5cf6;
+  text-decoration: none;
+}
+.vtb-assignee-phone:hover { text-decoration: underline; }
+
+.vtb-status-select {
+  font-size: 0.75rem;
+  padding: 4px 8px;
+  border-radius: 6px;
+  border: 1px solid #d1d5db;
+  background-color: #ffffff;
+  color: #4b5563;
+  cursor: pointer;
+  outline: none;
+}
+.vtb-status-select:focus {
+  border-color: #8b5cf6;
+}
+
+/* Quick Assignment Modal */
+.vtb-modal-overlay {
+  position: fixed;
+  top: 0; left: 0; right: 0; bottom: 0;
+  background-color: rgba(0, 0, 0, 0.4);
+  backdrop-filter: blur(3px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+}
+
+.vtb-modal-content {
+  background-color: #ffffff;
+  border-radius: 14px;
+  width: 100%;
+  max-width: 450px;
+  padding: 24px;
+  box-shadow: 0 20px 40px rgba(0,0,0,0.15);
+}
+
+.vtb-modal-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+.vtb-modal-header h3 {
+  margin: 0;
+  font-size: 1.25rem;
+}
+
+.vtb-close-btn {
+  background: none;
+  border: none;
+  font-size: 1.5rem;
+  color: #9ca3af;
+  cursor: pointer;
+}
+
+.vtb-form-group {
+  margin-bottom: 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.vtb-form-group label {
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: #374151;
+}
+
+.vtb-input, .vtb-select {
+  padding: 10px 12px;
+  border: 1px solid #d1d5db;
+  border-radius: 8px;
+  font-family: inherit;
+  font-size: 0.95rem;
+}
+
+.vtb-input:focus, .vtb-select:focus {
+  outline: none;
+  border-color: #c084fc;
+  box-shadow: 0 0 0 3px rgba(192, 132, 252, 0.2);
+}
+
+.vtb-modal-footer {
+  margin-top: 24px;
+  display: flex;
+  justify-content: flex-end;
+  gap: 12px;
+}
+
+.vtb-cancel-btn {
+  background: #f3f4f6;
+  border: none;
+  padding: 10px 16px;
+  border-radius: 8px;
+  color: #4b5563;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.vtb-submit-btn {
+  background: linear-gradient(135deg, #8b5cf6, #ec4899);
+  color: #ffffff;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 8px;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+/* Responsive */
+@media (max-width: 900px) {
+  .vtb-kanban-board {
+    flex-direction: column;
+  }
+  .vtb-lane {
+    width: 100%;
+  }
+}
+@media (max-width: 600px) {
+  .vtb-header-section {
+    flex-direction: column;
+    align-items: stretch;
+  }
+  .vtb-assign-btn {
+    justify-content: center;
+  }
+  .vtb-metrics-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+  }
+}
