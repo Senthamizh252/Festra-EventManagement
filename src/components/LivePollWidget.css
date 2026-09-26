@@ -1,0 +1,323 @@
+.lpw-container {
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+  background-color: #ffffff;
+  border-radius: 14px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05), 0 1px 3px rgba(0, 0, 0, 0.02);
+  padding: 32px;
+  max-width: 700px;
+  margin: 0 auto;
+  color: #1f2937;
+}
+
+/* Header & Status Indicators */
+.lpw-header {
+  margin-bottom: 24px;
+}
+
+.lpw-header-top {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  flex-wrap: wrap;
+  gap: 16px;
+}
+
+.lpw-title {
+  margin: 0;
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: #111827;
+}
+
+.lpw-subtitle {
+  margin: 8px 0 0 0;
+  color: #6b7280;
+  font-size: 0.95rem;
+}
+
+.lpw-status-badges {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+
+.lpw-live-badge {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  background-color: #dcfce7;
+  color: #166534;
+  padding: 6px 12px;
+  border-radius: 9999px;
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 0.5px;
+  text-transform: uppercase;
+}
+
+.lpw-live-indicator {
+  width: 8px;
+  height: 8px;
+  background-color: #10b981;
+  border-radius: 50%;
+  animation: pulse-green 2s infinite;
+}
+
+.lpw-locked-badge {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  background-color: #f3f4f6;
+  color: #4b5563;
+  padding: 6px 12px;
+  border-radius: 9999px;
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 0.5px;
+  text-transform: uppercase;
+}
+
+.lpw-vote-count {
+  font-size: 0.85rem;
+  color: #4b5563;
+  font-weight: 600;
+  background-color: #f3f4f6;
+  padding: 6px 12px;
+  border-radius: 9999px;
+}
+
+/* Question Header */
+.lpw-question {
+  font-size: 1.25rem;
+  font-weight: 600;
+  color: #111827;
+  margin-bottom: 24px;
+  line-height: 1.4;
+}
+
+/* Pre-Vote Option Cards */
+.lpw-options-list {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  margin-bottom: 24px;
+}
+
+.lpw-option-card {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 16px 20px;
+  border: 2px solid #f3f4f6;
+  border-radius: 12px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  background-color: #ffffff;
+}
+
+.lpw-option-card:hover {
+  border-color: #d8b4fe;
+  background-color: #faf5ff;
+}
+
+.lpw-option-card.selected {
+  border-color: #c084fc;
+  background-color: #fdf2f8;
+  box-shadow: 0 4px 12px rgba(236, 72, 153, 0.1);
+}
+
+.lpw-radio-circle {
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  border: 2px solid #d1d5db;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  transition: all 0.2s ease;
+}
+
+.lpw-option-card.selected .lpw-radio-circle {
+  border-color: #ec4899;
+}
+
+.lpw-radio-inner {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background-color: #ec4899;
+  opacity: 0;
+  transform: scale(0.5);
+  transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.lpw-option-card.selected .lpw-radio-inner {
+  opacity: 1;
+  transform: scale(1);
+}
+
+.lpw-option-text {
+  font-size: 1rem;
+  font-weight: 500;
+  color: #374151;
+}
+
+/* Post-Vote Result Bars */
+.lpw-result-row {
+  position: relative;
+  padding: 16px 20px;
+  border-radius: 12px;
+  background-color: #f3f4f6;
+  overflow: hidden;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  z-index: 1;
+}
+
+.lpw-result-bar {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
+  background: linear-gradient(135deg, rgba(139, 92, 246, 0.15), rgba(236, 72, 153, 0.15));
+  z-index: -1;
+  border-radius: 12px;
+  animation: growBar 1s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+}
+
+.lpw-result-row.is-winner .lpw-result-bar {
+  background: linear-gradient(135deg, rgba(139, 92, 246, 0.25), rgba(236, 72, 153, 0.25));
+}
+
+.lpw-result-content {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  font-size: 1rem;
+  font-weight: 500;
+  color: #1f2937;
+}
+
+.lpw-user-choice-badge {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #ec4899;
+  color: white;
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+}
+
+.lpw-result-pct {
+  font-weight: 700;
+  font-size: 1.05rem;
+  color: #1f2937;
+}
+
+/* Actions Footer */
+.lpw-actions {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  margin-top: 32px;
+}
+
+.lpw-submit-btn {
+  background: linear-gradient(135deg, #8b5cf6, #ec4899);
+  color: #ffffff;
+  border: none;
+  padding: 14px 24px;
+  border-radius: 10px;
+  font-weight: 600;
+  font-size: 1.05rem;
+  cursor: pointer;
+  width: 100%;
+  transition: opacity 0.2s ease, transform 0.2s ease, box-shadow 0.2s ease;
+  box-shadow: 0 4px 12px rgba(236, 72, 153, 0.25);
+}
+
+.lpw-submit-btn:hover:not(:disabled) {
+  opacity: 0.95;
+  transform: translateY(-2px);
+  box-shadow: 0 6px 16px rgba(236, 72, 153, 0.35);
+}
+
+.lpw-submit-btn:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+  box-shadow: none;
+  transform: none;
+}
+
+/* Organizer Ribbon */
+.lpw-organizer-ribbon {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  gap: 12px;
+  border-top: 1px solid #f3f4f6;
+  padding-top: 16px;
+}
+
+.lpw-org-btn {
+  background: none;
+  border: none;
+  padding: 8px 12px;
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: #6b7280;
+  cursor: pointer;
+  border-radius: 6px;
+  transition: all 0.2s ease;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.lpw-org-btn:hover {
+  background-color: #f3f4f6;
+  color: #374151;
+}
+
+.lpw-org-btn.lock-btn:hover {
+  color: #dc2626;
+  background-color: #fee2e2;
+}
+
+/* Animations */
+@keyframes pulse-green {
+  0% { box-shadow: 0 0 0 0 rgba(16, 185, 129, 0.4); }
+  70% { box-shadow: 0 0 0 6px rgba(16, 185, 129, 0); }
+  100% { box-shadow: 0 0 0 0 rgba(16, 185, 129, 0); }
+}
+
+@keyframes growBar {
+  from { width: 0%; }
+  to { width: var(--target-width); }
+}
+
+/* Responsive */
+@media (max-width: 600px) {
+  .lpw-container {
+    padding: 24px 20px;
+  }
+  .lpw-header-top {
+    flex-direction: column;
+    align-items: stretch;
+  }
+  .lpw-status-badges {
+    margin-top: 12px;
+  }
+  .lpw-organizer-ribbon {
+    flex-direction: column;
+    align-items: stretch;
+  }
+  .lpw-org-btn {
+    justify-content: center;
+    border: 1px solid #e5e7eb;
+  }
+}
