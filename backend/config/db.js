@@ -3,7 +3,7 @@ import dotenv from 'dotenv';
 
 dotenv.config();
 
-// Create a connection pool instead of a single connection for better performance
+// Create a connection pool using standard environment variables
 const pool = mysql.createPool({
     host: process.env.DB_HOST || 'localhost',
     user: process.env.DB_USER || 'root',
@@ -15,19 +15,33 @@ const pool = mysql.createPool({
     queueLimit: 0
 });
 
-// Test the database connection upon initialization
-const connectDB = async () => {
+// Robust query helper function with execution time logging and error handling
+export const query = async (text, params) => {
+    const start = Date.now();
     try {
-        const connection = await pool.getConnection();
-        console.log('MySQL database connected successfully');
-        connection.release(); // release the connection back to the pool
-    } catch (error) {
-        console.error('MySQL Connection Error:', error.message);
-        // Do not exit process immediately if dev, but it's good practice to know if DB fails
-        // process.exit(1); 
+        const [rows, fields] = await pool.query(text, params);
+        const duration = Date.now() - start;
+        console.log(`[DB Query] executed query`, { text, duration: `${duration}ms` });
+        return [rows, fields];
+    } catch (err) {
+        const duration = Date.now() - start;
+        console.error(`[DB Query Error]`, { text, duration: `${duration}ms`, error: err.message });
+        throw err;
     }
 };
 
-connectDB();
+// Asynchronous health-check ping function
+export const testDbConnection = async () => {
+    try {
+        const connection = await pool.getConnection();
+        const [rows] = await connection.query('SELECT NOW() as now');
+        console.log('✅ Database connection successful:', rows[0].now);
+        connection.release();
+        return true;
+    } catch (err) {
+        console.error('❌ Database connection failed:', err.message);
+        return false;
+    }
+};
 
 export default pool;
