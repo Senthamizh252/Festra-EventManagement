@@ -1,144 +1,210 @@
 import bcrypt from 'bcryptjs';
 import jwt from 'jsonwebtoken';
-import db from '../config/db.js';
+import { query } from '../config/db.js';
 
-// Helper function for email validation
-const isValidEmail = (email) => {
-    const re = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-    return re.test(String(email).toLowerCase());
-};
-
-// @desc    Register a new user
-// @route   POST /api/auth/register
-// @access  Public
+/**
+ * @desc    Register a new user
+ * @route   POST /api/auth/register
+ * @access  Public
+ */
 export const register = async (req, res) => {
     try {
-        const { full_name, email, phone, register_number, department, password, role } = req.body;
+        const { fullName, email, password, role, collegeName, department, registerNumber } = req.body;
 
         // 1. Validate required fields
-        if (!full_name || !email || !phone || !register_number || !department || !password) {
-            return res.status(400).json({ success: false, message: 'All fields are required' });
+        if (!fullName || !email || !password || !role) {
+            return res.status(400).json({
+                success: false,
+                message: 'Please provide all required fields (fullName, email, password, role)'
+            });
         }
 
-        // 2. Validate email format
-        if (!isValidEmail(email)) {
-            return res.status(400).json({ success: false, message: 'Invalid email format' });
+        const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+        if (!emailRegex.test(email)) {
+            return res.status(400).json({
+                success: false,
+                message: 'Please provide a valid email address'
+            });
         }
 
-        // 3. Validate password (e.g., minimum 6 characters)
-        if (password.length < 6) {
-            return res.status(400).json({ success: false, message: 'Password must be at least 6 characters long' });
+        // 2. Check for existing user by email or register number
+        let userCheckQuery = 'SELECT id FROM users WHERE email = ?';
+        let queryParams = [email];
+        
+        if (registerNumber) {
+            userCheckQuery += ' OR register_number = ?';
+            queryParams.push(registerNumber);
         }
 
-        // 4. Check whether email already exists
-        const [existingUsers] = await db.execute('SELECT id FROM users WHERE email = ?', [email]);
+        const [existingUsers] = await query(userCheckQuery, queryParams);
         if (existingUsers.length > 0) {
-            return res.status(400).json({ success: false, message: 'Email already registered' });
+            return res.status(400).json({
+                success: false,
+                message: 'Email or Register Number already exists in the system'
+            });
         }
 
-        // 5. Hash password
+        // 3. Hash the password
         const salt = await bcrypt.genSalt(10);
         const hashedPassword = await bcrypt.hash(password, salt);
 
-        // Define user role (default to participant if not provided or invalid)
-        const userRole = (role === 'organizer') ? 'organizer' : 'participant';
-
-        // 6. Insert user into MySQL
-        const query = `
-            INSERT INTO users (full_name, email, phone, register_number, department, password, role)
+        // 4. Insert new user into the database
+        const insertQuery = `
+            INSERT INTO users (full_name, email, password, role, college_name, department, register_number)
             VALUES (?, ?, ?, ?, ?, ?, ?)
         `;
-        const [result] = await db.execute(query, [full_name, email, phone, register_number, department, hashedPassword, userRole]);
+        const insertParams = [
+            fullName, 
+            email, 
+            hashedPassword, 
+            role, 
+            collegeName || null, 
+            department || null, 
+            registerNumber || null
+        ];
 
-        // 8. Return response
+        const [result] = await query(insertQuery, insertParams);
+        const userId = result.insertId;
+
+        // 5. Generate signed JWT token
+        if (!process.env.JWT_SECRET) {
+            throw new Error('JWT_SECRET is not configured in environment variables');
+        }
+
+        const token = jwt.sign(
+            { id: userId, email, role },
+            process.env.JWT_SECRET,
+            { expiresIn: '7d' }
+        );
+
+        // 6. Return response with sanitized user data
         res.status(201).json({
             success: true,
-            message: 'Registration successful'
+            message: 'User registered successfully',
+            token,
+            user: {
+                id: userId,
+                fullName,
+                email,
+                role,
+                collegeName,
+                department,
+                registerNumber
+            }
         });
-
-    } catch (error) {
-        console.error('Registration Error:', error);
-        res.status(500).json({ success: false, message: 'Server error during registration' });
+    } catch (err) {
+        console.error('[Register Error]', err);
+        res.status(500).json({
+            success: false,
+            message: 'Internal server error during registration',
+            error: process.env.NODE_ENV === 'development' ? err.message : undefined
+        });
     }
 };
 
-// @desc    Login user
-// @route   POST /api/auth/login
-// @access  Public
+/**
+ * @desc    Login a user
+ * @route   POST /api/auth/login
+ * @access  Public
+ */
 export const login = async (req, res) => {
     try {
         const { email, password } = req.body;
 
-        // 1. Validate input
+        // 1. Validation
         if (!email || !password) {
-            return res.status(400).json({ success: false, message: 'Please provide email and password' });
+            return res.status(400).json({
+                success: false,
+                message: 'Please provide email and password'
+            });
         }
 
         // 2. Find user by email
-        const [users] = await db.execute('SELECT * FROM users WHERE email = ?', [email]);
-
+        const [users] = await query('SELECT * FROM users WHERE email = ?', [email]);
         if (users.length === 0) {
-            return res.status(401).json({ success: false, message: 'Invalid credentials' });
+            return res.status(401).json({
+                success: false,
+                message: 'Invalid credentials'
+            });
         }
 
         const user = users[0];
 
-        // 3. Compare password
+        // 3. Compare password hashes
         const isMatch = await bcrypt.compare(password, user.password);
         if (!isMatch) {
-            return res.status(401).json({ success: false, message: 'Invalid credentials' });
+            return res.status(401).json({
+                success: false,
+                message: 'Invalid credentials'
+            });
         }
 
-        // 5. Generate JWT token
-        const payload = {
-            id: user.id,
-            role: user.role
-        };
-        const token = jwt.sign(payload, process.env.JWT_SECRET, { expiresIn: '7d' });
+        // 4. Generate JWT
+        if (!process.env.JWT_SECRET) {
+            throw new Error('JWT_SECRET is not configured in environment variables');
+        }
 
-        // 6. Return user information and token
-        res.status(200).json({
+        const token = jwt.sign(
+            { id: user.id, email: user.email, role: user.role },
+            process.env.JWT_SECRET,
+            { expiresIn: '7d' }
+        );
+
+        // 5. Return token and user object
+        res.json({
             success: true,
-            message: 'Login successful',
+            message: 'Logged in successfully',
             token,
             user: {
                 id: user.id,
-                full_name: user.full_name,
+                fullName: user.full_name,
                 email: user.email,
-                role: user.role
+                role: user.role,
+                department: user.department
             }
         });
-
-    } catch (error) {
-        console.error('Login Error:', error);
-        res.status(500).json({ success: false, message: 'Server error during login' });
+    } catch (err) {
+        console.error('[Login Error]', err);
+        res.status(500).json({
+            success: false,
+            message: 'Internal server error during login',
+            error: process.env.NODE_ENV === 'development' ? err.message : undefined
+        });
     }
 };
 
-// @desc    Get current user profile
-// @route   GET /api/auth/me
-// @access  Private
+/**
+ * @desc    Get current authenticated user's profile
+ * @route   GET /api/auth/me
+ * @access  Private
+ */
 export const getMe = async (req, res) => {
     try {
-        // req.user will be populated by authMiddleware
         const userId = req.user.id;
-
-        const [users] = await db.execute(
-            'SELECT id, full_name, email, phone, register_number, department, role, created_at FROM users WHERE id = ?',
+        
+        // Fetch user from DB excluding the password
+        const [users] = await query(
+            'SELECT id, full_name, email, role, college_name, department, register_number, created_at FROM users WHERE id = ?',
             [userId]
         );
 
         if (users.length === 0) {
-            return res.status(404).json({ success: false, message: 'User not found' });
+            return res.status(404).json({
+                success: false,
+                message: 'User profile not found'
+            });
         }
 
-        res.status(200).json({
+        res.json({
             success: true,
             user: users[0]
         });
-
-    } catch (error) {
-        console.error('Get profile error:', error);
-        res.status(500).json({ success: false, message: 'Server error getting profile' });
+    } catch (err) {
+        console.error('[GetMe Error]', err);
+        res.status(500).json({
+            success: false,
+            message: 'Internal server error while fetching profile',
+            error: process.env.NODE_ENV === 'development' ? err.message : undefined
+        });
     }
 };
