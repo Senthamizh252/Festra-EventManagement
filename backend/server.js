@@ -2,6 +2,9 @@ import express from 'express';
 import cors from 'cors';
 import dotenv from 'dotenv';
 import { testDbConnection } from './config/db.js';
+import authRoutes from './routes/authRoutes.js';
+import eventRoutes from './routes/eventRoutes.js';
+import registrationRoutes from './routes/registrationRoutes.js';
 
 // Load Environment variables
 dotenv.config();
@@ -48,10 +51,9 @@ app.get('/api/health', async (req, res) => {
   });
 });
 
-// Route placeholders ready for mount
-app.use('/api/auth', (req, res) => res.json({ message: 'Auth route placeholder' }));
-app.use('/api/events', (req, res) => res.json({ message: 'Events route placeholder' }));
-app.use('/api/registrations', (req, res) => res.json({ message: 'Registrations route placeholder' }));
+app.use('/api/auth', authRoutes);
+app.use('/api/events', eventRoutes);
+app.use('/api/registrations', registrationRoutes);
 app.use('/api/certificates', (req, res) => res.json({ message: 'Certificates route placeholder' }));
 
 // Global 404 handler for unrecognized routes
