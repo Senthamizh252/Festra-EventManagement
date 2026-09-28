@@ -1,0 +1,357 @@
+/* LiveActivityTicker.css */
+
+.lat-container {
+  background-color: #ffffff;
+  border-radius: 14px;
+  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.04), 0 1px 4px rgba(0, 0, 0, 0.02);
+  padding: 24px;
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+  color: #1e293b;
+  max-width: 800px;
+  margin: 0 auto;
+  border: 1px solid #f1f5f9;
+}
+
+/* Header Section */
+.lat-header-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  margin-bottom: 20px;
+  flex-wrap: wrap;
+  gap: 16px;
+}
+
+.lat-header-content {
+  flex: 1;
+  min-width: 280px;
+}
+
+.lat-title {
+  margin: 0 0 6px 0;
+  font-size: 1.25rem;
+  font-weight: 700;
+  color: #0f172a;
+}
+
+.lat-subtitle {
+  margin: 0;
+  font-size: 0.875rem;
+  color: #64748b;
+}
+
+/* Status Badge */
+.lat-status-badge {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 6px 12px;
+  border-radius: 20px;
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 0.05em;
+  background-color: #f0fdf4;
+  color: #15803d;
+  border: 1px solid #bbf7d0;
+}
+
+.lat-status-badge.paused {
+  background-color: #fef2f2;
+  color: #b91c1c;
+  border-color: #fecaca;
+}
+
+.lat-pulse-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background-color: #22c55e;
+}
+
+.lat-status-badge.active .lat-pulse-dot {
+  animation: pulse-green 2s infinite;
+}
+
+.lat-status-badge.paused .lat-pulse-dot {
+  background-color: #ef4444;
+}
+
+@keyframes pulse-green {
+  0% {
+    transform: scale(0.95);
+    box-shadow: 0 0 0 0 rgba(34, 197, 94, 0.7);
+  }
+  70% {
+    transform: scale(1);
+    box-shadow: 0 0 0 6px rgba(34, 197, 94, 0);
+  }
+  100% {
+    transform: scale(0.95);
+    box-shadow: 0 0 0 0 rgba(34, 197, 94, 0);
+  }
+}
+
+/* Velocity Strip */
+.lat-velocity-strip {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+  gap: 12px;
+  margin-bottom: 24px;
+}
+
+.lat-telemetry-pill {
+  background-color: #f8fafc;
+  border: 1px solid #e2e8f0;
+  border-radius: 10px;
+  padding: 12px 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.lat-telemetry-label {
+  font-size: 0.75rem;
+  font-weight: 600;
+  color: #64748b;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.lat-telemetry-value {
+  font-size: 1.125rem;
+  font-weight: 700;
+  color: #0f172a;
+}
+
+/* Stream Controls */
+.lat-stream-controls {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px;
+  border-bottom: 1px solid #f1f5f9;
+  padding-bottom: 16px;
+  flex-wrap: wrap;
+  gap: 16px;
+}
+
+.lat-pause-toggle {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  background-color: #fff;
+  border: 1px solid #cbd5e1;
+  color: #475569;
+  padding: 8px 16px;
+  border-radius: 8px;
+  font-size: 0.875rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.lat-pause-toggle:hover {
+  background-color: #f8fafc;
+  border-color: #94a3b8;
+  color: #0f172a;
+}
+
+.lat-filters {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+
+.lat-filter-pill {
+  background: none;
+  border: 1px solid #e2e8f0;
+  color: #64748b;
+  padding: 6px 14px;
+  border-radius: 20px;
+  font-size: 0.8125rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.lat-filter-pill:hover {
+  background-color: #f8fafc;
+  color: #334155;
+}
+
+.lat-filter-pill.active {
+  background: linear-gradient(135deg, #8a2be2, #ff1493);
+  color: white;
+  border-color: transparent;
+  box-shadow: 0 4px 12px rgba(138, 43, 226, 0.2);
+}
+
+/* Stream Feed */
+.lat-stream-feed {
+  max-height: 500px;
+  overflow-y: auto;
+  padding-right: 8px;
+}
+
+/* Custom Scrollbar */
+.lat-stream-feed::-webkit-scrollbar {
+  width: 6px;
+}
+.lat-stream-feed::-webkit-scrollbar-track {
+  background: #f1f5f9;
+  border-radius: 4px;
+}
+.lat-stream-feed::-webkit-scrollbar-thumb {
+  background: #cbd5e1;
+  border-radius: 4px;
+}
+.lat-stream-feed::-webkit-scrollbar-thumb:hover {
+  background: #94a3b8;
+}
+
+.lat-activities-list {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.lat-empty-state {
+  text-align: center;
+  padding: 40px 20px;
+  color: #94a3b8;
+  font-size: 0.875rem;
+  background-color: #f8fafc;
+  border-radius: 8px;
+  border: 1px dashed #cbd5e1;
+}
+
+/* Activity Card */
+.lat-activity-card {
+  display: flex;
+  gap: 16px;
+  padding: 16px;
+  border-radius: 12px;
+  background-color: #fff;
+  border: 1px solid #f1f5f9;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.02);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.lat-activity-card:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+}
+
+.lat-activity-card.is-new {
+  animation: slideDownFade 0.5s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+@keyframes slideDownFade {
+  0% {
+    opacity: 0;
+    transform: translateY(-20px) scale(0.98);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+.lat-initials-circle {
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 700;
+  font-size: 0.875rem;
+  flex-shrink: 0;
+}
+
+.lat-activity-content {
+  flex: 1;
+  min-width: 0;
+}
+
+.lat-activity-meta-top {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 6px;
+  gap: 8px;
+}
+
+.lat-type-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  padding: 4px 8px;
+  border-radius: 6px;
+  font-size: 0.75rem;
+  font-weight: 600;
+}
+
+.lat-time {
+  font-size: 0.75rem;
+  color: #94a3b8;
+  white-space: nowrap;
+}
+
+.lat-activity-text {
+  margin: 0 0 8px 0;
+  font-size: 0.9375rem;
+  color: #334155;
+  line-height: 1.4;
+  font-weight: 500;
+}
+
+.lat-activity-location {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  font-size: 0.75rem;
+  color: #64748b;
+  font-weight: 500;
+}
+
+/* Colors for specific types */
+.lat-emerald.lat-initials-circle { background-color: #d1fae5; color: #059669; }
+.lat-emerald.lat-type-badge { background-color: #ecfdf5; color: #059669; border: 1px solid #a7f3d0; }
+
+.lat-blue.lat-initials-circle { background-color: #dbeafe; color: #2563eb; }
+.lat-blue.lat-type-badge { background-color: #eff6ff; color: #2563eb; border: 1px solid #bfdbfe; }
+
+.lat-purple.lat-initials-circle { background-color: #f3e8ff; color: #7e22ce; }
+.lat-purple.lat-type-badge { background-color: #faf5ff; color: #7e22ce; border: 1px solid #e9d5ff; }
+
+.lat-slate.lat-initials-circle { background-color: #e2e8f0; color: #475569; }
+.lat-slate.lat-type-badge { background-color: #f8fafc; color: #475569; border: 1px solid #cbd5e1; }
+
+/* Responsive adjustments */
+@media (max-width: 640px) {
+  .lat-velocity-strip {
+    grid-template-columns: 1fr;
+  }
+  
+  .lat-stream-controls {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+  
+  .lat-pause-toggle {
+    width: 100%;
+    justify-content: center;
+  }
+  
+  .lat-filters {
+    width: 100%;
+    justify-content: flex-start;
+    overflow-x: auto;
+    padding-bottom: 4px;
+  }
+  
+  .lat-filter-pill {
+    white-space: nowrap;
+  }
+}
